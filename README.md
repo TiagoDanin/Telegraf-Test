@@ -1,6 +1,6 @@
 # Telegraf Test
 
-Telegraf Test - Simple Test Framework of Bots in Telegraf
+Telegraf Test - Simple Test Framework of Telegram Bots
 
 ## Installation
 

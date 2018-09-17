@@ -1,7 +1,7 @@
 {
   "name": "telegraf-test",
   "version": "0.0.1",
-  "description": "Telegraf Test - Simple Test Framework of Bots in Telegraf",
+  "description": "Telegraf Test - Simple Test Framework of Telegram Bots",
   "main": "index.js",
   "dependencies": {
     "axios": "0.18.0",
