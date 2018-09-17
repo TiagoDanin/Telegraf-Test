@@ -1,14 +1,19 @@
+const axios = require('axios')
+
 class TelegrafTest {
 	constructor (options) {
 		this.options = {
-			host: 'http://127.0.0.1:3000/secret-path',
+			url: 'http://127.0.0.1:3000/secret-path',
 			...options
 		}
+		this.updateId = 0
+		this.setUser({})
+		this.setChat({})
 	}
 
 	setUser (user) {
 		this.user = {
-			id: 0123456789,
+			id: 1234567890,
 			is_bot: false,
 			first_name: 'FIST-NAME',
 			last_name: 'LAST-NAME',
@@ -38,26 +43,50 @@ class TelegrafTest {
 		if (this.message && this.message.message_id) {
 			message_id = Math.floor(message_id) + 1
 		}
+		//TODO: Add entities
 		this.message = {
-			message_id: message_id
-			date: `${+ new Date()}`
+			message_id: message_id,
+			date: `${+ new Date()}`,
+			...message
 		}
 		return this.message
 	}
 
-	sendUpdate () {
-		//setMessage()
-		return
+	setUpdateId (id) {
+		this.updateId = Math.floor(id)
 	}
 
-	sendUpdateText () {
-		return sendUpdate()
+	sendUpdate (update) {
+		this.updateId++
+		return axios({
+			method: 'POST',
+			url: this.options.url,
+			headers: {
+				'content-type': 'application/json'
+			},
+			data: {
+				update_id: this.updateId,
+				...update
+			}
+		})
 	}
 
+	sendUpdateText (text, options) {
+		var message = this.setMessage({
+			from: this.user,
+			chat: this.chat,
+			text: text,
+			...options
+		})
+		return this.sendUpdate({message: message})
+	}
+
+	//TODO: Add sendUpdateInline
 	sendUpdateInline () {
 		return sendUpdate()
 	}
 
+	//TODO: Add sendUpdateCallback
 	sendUpdateCallback () {
 		return sendUpdate()
 	}
