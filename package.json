@@ -1,0 +1,34 @@
+{
+  "name": "telegraf-test",
+  "version": "0.0.1",
+  "description": "Telegraf Test - Simple Test Framework of Bots in Telegraf",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "0.18.0",
+    "debug": "4.0.1",
+    "telegraf": "3.23.1"
+  },
+  "devDependencies": {
+    "expect.js": "0.3.1",
+    "mocha": "5.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Nice Test :)\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TiagoDanin/Telegraf-Test.git"
+  },
+  "keywords": [
+    "telegraf",
+    "test",
+    "telegram",
+    "framework"
+  ],
+  "author": "Tiago Danin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TiagoDanin/Telegraf-Test/issues"
+  },
+  "homepage": "https://github.com/TiagoDanin/Telegraf-Test#readme"
+}
