@@ -9,8 +9,12 @@ class TelegrafTest {
 		this.updateId = 0
 		this.setUser({})
 		this.setChat({})
+		this.setMessage({})
+		this.setInlineQuery({})
+		this.setCallbackQuery({})
 	}
 
+	//set**
 	setUser (user) {
 		this.user = {
 			id: 1234567890,
@@ -46,16 +50,47 @@ class TelegrafTest {
 		//TODO: Add entities
 		this.message = {
 			message_id: message_id,
+			from: this.user,
+			chat: this.chat,
 			date: `${+ new Date()}`,
 			...message
 		}
 		return this.message
 	}
 
+	setInlineQuery (inlineQuery) {
+		var id = 1
+		if (this.inline_query && this.inline_query.id) {
+			id = Math.floor(id) + 1
+		}
+		this.inline_query = {
+			id: id,
+			from: this.user,
+			query: '',
+			offset: '',
+			...inlineQuery
+		}
+		return this.inline_query
+	}
+
+	setCallbackQuery (callbackQuery) {
+		var id = 1
+		if (this.callback_query && this.callback_query.id) {
+			id = Math.floor(id) + 1
+		}
+		this.callback_query = {
+			id: id,
+			from: this.user,
+			...callbackQuery
+		}
+		return this.callback_query
+	}
+
 	setUpdateId (id) {
 		this.updateId = Math.floor(id)
 	}
 
+	//send**
 	sendUpdate (update) {
 		this.updateId++
 		return axios({
@@ -71,24 +106,47 @@ class TelegrafTest {
 		})
 	}
 
-	sendUpdateText (text, options) {
+	sendText (text, options) {
 		var message = this.setMessage({
-			from: this.user,
-			chat: this.chat,
 			text: text,
 			...options
 		})
 		return this.sendUpdate({message: message})
 	}
 
-	//TODO: Add sendUpdateInline
-	sendUpdateInline () {
-		return sendUpdate()
+	sendMessage (options) {
+		var message = this.setMessage({
+			...options
+		})
+		return this.sendUpdate({message: message})
 	}
 
-	//TODO: Add sendUpdateCallback
-	sendUpdateCallback () {
-		return sendUpdate()
+	sendMessageWithText (text, options) {
+		return this.sendText(text, options)
+	}
+
+	sendInlineQuery (text, options) {
+		var inlineQuery = this.setInlineQuery({
+			query: text,
+			...options
+		})
+		return this.sendUpdate({inline_query: inlineQuery})
+	}
+
+	sendCallbackQuery (options) {
+		var callbackQuery = this.setCallbackQuery({
+			...options
+		})
+		return this.sendUpdate({callback_query: callbackQuery})
+	}
+
+	sendCallbackQueryWithData (text, options) {
+		var callbackQuery = this.setCallbackQuery({
+			data: text,
+			message: this.message,
+			...options
+		})
+		return this.sendUpdate({callback_query: callbackQuery})
 	}
 
 }
