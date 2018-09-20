@@ -13,7 +13,7 @@
     "mocha": "5.2.0"
   },
   "scripts": {
-    "test": "echo \"Nice Test :)\""
+    "test": "mocha --exit --timeout 100000"
   },
   "repository": {
     "type": "git",
