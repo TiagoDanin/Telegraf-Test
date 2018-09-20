@@ -126,7 +126,6 @@ Set environment variables `DEBUG=telgraf:test`
 ## Dev Dependencies
 
 - [telegraf](https://ghub.io/telegraf): 📡 Modern Telegram bot framework
-- [expect.js](https://ghub.io/expect.js): BDD style assertions for node and the browser.
 - [mocha](https://ghub.io/mocha): simple, flexible, fun test framework
 
 ## License

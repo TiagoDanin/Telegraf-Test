@@ -9,7 +9,6 @@
   },
   "devDependencies": {
     "telegraf": "3.23.1",
-    "expect.js": "0.3.1",
     "mocha": "5.2.0"
   },
   "scripts": {
