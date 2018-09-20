@@ -1,6 +1,12 @@
 # Telegraf Test
 
-Telegraf Test - Simple Test Framework of Telegram Bots
+Telegraf Test - Simple Test ToolKit of Telegram Bots
+
+## Features
+
+- Compatible with [Telegraf](http://telegraf.js.org) <3.
+- Send message, inline query and callback query.
+- Work in local network.
 
 ## Installation
 
@@ -42,7 +48,6 @@ test.setUser({
 }*/
 
 bot.hears(/ping/i, (ctx) => {
-	console.log('------')
 	ctx.reply('Pong!')
 })
 
@@ -61,9 +66,13 @@ test.sendMessageWithText('/ping')
 
 ### Options of Class `TelegrafTest({options})`
 
-**url** - String
+- **url** - String
 > Webhook url of your bot.</br>
 > Default value: `http://127.0.0.1:3000/secret-path`
+
+- **axios** - Object
+> Config/option of Axios.</br>
+> Default value: `{headers: {'content-type': 'application/json'}, method: 'POST'}`
 
 ### API
 

@@ -1,7 +1,7 @@
 {
   "name": "telegraf-test",
-  "version": "0.0.1",
-  "description": "Telegraf Test - Simple Test Framework of Telegram Bots",
+  "version": "1.0.0",
+  "description": "Telegraf Test - Simple Test ToolKit of Telegram Bots",
   "main": "index.js",
   "dependencies": {
     "axios": "0.18.0",
@@ -22,7 +22,8 @@
     "telegraf",
     "test",
     "telegram",
-    "framework"
+    "framework",
+    "toolkit"
   ],
   "author": "Tiago Danin",
   "license": "MIT",
