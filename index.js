@@ -1,9 +1,13 @@
 const axios = require('axios')
+const debug = require('debug')
+
+const log = debug('telegraf:test')
 
 class TelegrafTest {
 	constructor (options) {
 		this.options = {
 			url: 'http://127.0.0.1:3000/secret-path',
+			axios: {},
 			...options
 		}
 		this.updateId = 0
@@ -14,23 +18,24 @@ class TelegrafTest {
 		this.setCallbackQuery({})
 	}
 
-	//set**
+	//Methods start in set**
 	setUser (user) {
 		this.user = {
 			id: 1234567890,
 			is_bot: false,
 			first_name: 'FIST-NAME',
-			last_name: 'LAST-NAME',
+			last_name: '',
 			username: 'USERNAME',
 			language_code: 'en-US',
 			...user
 		}
+		log('New user', this.user)
 		return this.user
 	}
 
 	setChat (chat) {
 		this.chat = {
-			id: 89198119,
+			id: 1234567890,
 			type: 'private', // “private”, “group”, “supergroup” or “channel”
 			title: 'TITLE',
 			username: 'USERNAME',
@@ -39,6 +44,7 @@ class TelegrafTest {
 			all_members_are_administrators: false,
 			...chat
 		}
+		log('New chat', this.chat)
 		return this.chat
 	}
 
@@ -88,11 +94,17 @@ class TelegrafTest {
 
 	setUpdateId (id) {
 		this.updateId = Math.floor(id)
+		log('New update id', this.updateId)
+		return this.updateId
 	}
 
-	//send**
+	//Methods start in send**
 	sendUpdate (update) {
 		this.updateId++
+		log('Send via webhook', this.options.url, {
+			update_id: this.updateId,
+			...update
+		})
 		return axios({
 			method: 'POST',
 			url: this.options.url,
@@ -102,16 +114,9 @@ class TelegrafTest {
 			data: {
 				update_id: this.updateId,
 				...update
-			}
+			},
+			...this.options.axios
 		})
-	}
-
-	sendText (text, options) {
-		var message = this.setMessage({
-			text: text,
-			...options
-		})
-		return this.sendUpdate({message: message})
 	}
 
 	sendMessage (options) {
@@ -122,12 +127,16 @@ class TelegrafTest {
 	}
 
 	sendMessageWithText (text, options) {
-		return this.sendText(text, options)
+		var message = this.setMessage({
+			text: text,
+			...options
+		})
+		return this.sendUpdate({message: message})
 	}
 
-	sendInlineQuery (text, options) {
+	sendInlineQuery (query, options) {
 		var inlineQuery = this.setInlineQuery({
-			query: text,
+			query: query,
 			...options
 		})
 		return this.sendUpdate({inline_query: inlineQuery})
@@ -140,9 +149,9 @@ class TelegrafTest {
 		return this.sendUpdate({callback_query: callbackQuery})
 	}
 
-	sendCallbackQueryWithData (text, options) {
+	sendCallbackQueryWithData (data, options) {
 		var callbackQuery = this.setCallbackQuery({
-			data: text,
+			data: data,
 			message: this.message,
 			...options
 		})
