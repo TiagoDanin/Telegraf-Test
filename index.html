@@ -5,14 +5,14 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<meta name="description" content=" #SOON Telegraf Test - Simple Test Framework of Telegram Bots by Tiago Danin.">
+	<meta name="description" content="[WIP] Telegraf Test - Simple Test ToolKit of Telegram Bots by Tiago Danin.">
 	<meta name="keywords" content="tiago, danin, tiagodanin, tiagoedge, Telegraf-Test">
 	<meta name="author" content="TiagoDanin">
 
 	<meta property="og:title" content="TiagoDanin">
 	<meta property="og:url" content="https://tiagodanin.github.io/Telegraf-Test">
 	<meta property="og:site_name" content="Telegraf-Test">
-	<meta property="og:description" content=" #SOON Telegraf Test - Simple Test Framework of Telegram Bots by Tiago Danin.">
+	<meta property="og:description" content="[WIP] Telegraf Test - Simple Test ToolKit of Telegram Bots by Tiago Danin.">
 	<meta name="twitter:title" content="Telegraf-Test">
 	<meta name="twitter:url" content="https://tiagodanin.github.io/Telegraf-Test">
 
@@ -66,7 +66,7 @@
 		<div class="uk-card uk-card-body uk-card-primary">
 			<h3 class="uk-card-title">About</h3>
 			<div class="uk-panel">
-				<p> #SOON Telegraf Test - Simple Test Framework of Telegram Bots by Tiago Danin.</p>
+				<p>[WIP] Telegraf Test - Simple Test ToolKit of Telegram Bots by Tiago Danin.</p>
 			</div>
 		</div>
 		<hr class="uk-divider-icon">
@@ -74,14 +74,14 @@
 
 	<!--
 title: Telegraf-Test
-description:  #SOON Telegraf Test - Simple Test Framework of Telegram Bots by Tiago Danin.
+description: [WIP] Telegraf Test - Simple Test ToolKit of Telegram Bots by Tiago Danin.
 cubohub: true
 baseURL: https://tiagodanin.github.io
 -->
 
 
 <div class="uk-container">
-	<h1 id="telegraf-test"><a href="#telegraf-test">Telegraf Test</a></h1>
+	<h1 id="telegraf-test-codacy-badge-build-status-known-vulnerabilities"><a href="#telegraf-test-codacy-badge-build-status-known-vulnerabilities">Telegraf Test <a href="https://www.codacy.com/app/tiagodanin/Telegraf-Test?utm_source=github.com&#x26;utm_medium=referral&#x26;utm_content=TiagoDanin/Telegraf-Test&#x26;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/626063315da84c0fa65f020a864774c4" alt="Codacy Badge"></a> <a href="https://travis-ci.org/TiagoDanin/Telegraf-Test"><img src="https://travis-ci.org/TiagoDanin/Telegraf-Test.svg?branch=master" alt="Build Status"></a> <a href="https://snyk.io/test/github/TiagoDanin/Telegraf-Test?targetFile=package.json"><img src="https://snyk.io/test/github/TiagoDanin/Telegraf-Test/badge.svg?targetFile=package.json" alt="Known Vulnerabilities"></a></a></h1>
 <p>Telegraf Test - Simple Test ToolKit of Telegram Bots</p>
 <h2 id="features"><a href="#features">Features</a></h2>
 <ul>
@@ -155,19 +155,19 @@ Default value: <code>{headers: {'content-type': 'application/json'}, method: 'PO
 <h4 id="set--get-objects"><a href="#set--get-objects">Set &#x26; Get Objects</a></h4>
 <ul>
 <li>
-<p><strong>setUser({</strong><a href="https://https://core.telegram.org/bots/api">params</a><strong>})</strong></p>
+<p><strong>setUser({</strong><a href="https://core.telegram.org/bots/api#user">params</a><strong>})</strong></p>
 </li>
 <li>
-<p><strong>setChat({</strong><a href="https://https://core.telegram.org/bots/api">params</a><strong>})</strong></p>
+<p><strong>setChat({</strong><a href="https://core.telegram.org/bots/api#chat">params</a><strong>})</strong></p>
 </li>
 <li>
-<p><strong>setMessage({</strong><a href="https://https://core.telegram.org/bots/api">params</a><strong>})</strong></p>
+<p><strong>setMessage({</strong><a href="https://core.telegram.org/bots/api#message">params</a><strong>})</strong></p>
 </li>
 <li>
-<p><strong>setInlineQuery({</strong><a href="https://https://core.telegram.org/bots/api">params</a><strong>})</strong></p>
+<p><strong>setInlineQuery({</strong><a href="https://core.telegram.org/bots/api#inlinequery">params</a><strong>})</strong></p>
 </li>
 <li>
-<p><strong>setCallbackQuery({</strong><a href="https://https://core.telegram.org/bots/api">params</a><strong>})</strong></p>
+<p><strong>setCallbackQuery({</strong><a href="https://core.telegram.org/bots/api#callbackquery">params</a><strong>})</strong></p>
 </li>
 <li>
 <p><strong>setUpdateId(id: Number)</strong></p>
@@ -180,12 +180,12 @@ Default value: Start in <code>0</code></p>
 <h4 id="send-requests"><a href="#send-requests">Send Requests</a></h4>
 <p>Return request of <a href="https://github.com/axios/axios">axios</a>.</p>
 <ul>
-<li><strong>sendUpdate({</strong><a href="https://https://core.telegram.org/bots/api">params</a><strong>})</strong></li>
-<li><strong>sendMessage({</strong><a href="https://https://core.telegram.org/bots/api">params</a><strong>})</strong></li>
-<li><strong>sendMessageWithText(text: String, {</strong><a href="https://https://core.telegram.org/bots/api">params</a><strong>})</strong></li>
-<li><strong>sendInlineQuery(query: String, {</strong><a href="https://https://core.telegram.org/bots/api">params</a><strong>})</strong></li>
-<li><strong>sendCallbackQuery({</strong><a href="https://https://core.telegram.org/bots/api">params</a><strong>})</strong></li>
-<li><strong>sendCallbackQueryWithData(data: String, {</strong><a href="https://https://core.telegram.org/bots/api">params</a><strong>})</strong></li>
+<li><strong>sendUpdate({</strong><a href="https://core.telegram.org/bots/api#update">params</a><strong>})</strong></li>
+<li><strong>sendMessage({</strong><a href="https://core.telegram.org/bots/api#message">params</a><strong>})</strong></li>
+<li><strong>sendMessageWithText(text: String, {</strong><a href="https://core.telegram.org/bots/api#message">params</a><strong>})</strong></li>
+<li><strong>sendInlineQuery(query: String, {</strong><a href="https://core.telegram.org/bots/api#inlinequery">params</a><strong>})</strong></li>
+<li><strong>sendCallbackQuery({</strong><a href="https://core.telegram.org/bots/api#callbackquery">params</a><strong>})</strong></li>
+<li><strong>sendCallbackQueryWithData(data: String, {</strong><a href="https://core.telegram.org/bots/api#callbackquery">params</a><strong>})</strong></li>
 </ul>
 <h3 id="using-with-a-test-framework"><a href="#using-with-a-test-framework">Using with a Test Framework</a></h3>
 <p>You create a test suite with
@@ -201,7 +201,7 @@ describe(<span class="hljs-string">'bot'</span>, <span class="hljs-function"><sp
 })</code></pre>
 <p>Run with <code>$ mocha --exit --timeout 100000</code></p>
 <h3 id="using-debug"><a href="#using-debug">Using Debug</a></h3>
-<p>Set environment variables <code>DEBUG=telgraf:test</code></p>
+<p>Set environment variables <code>DEBUG=telgraf:test</code>.</p>
 <h2 id="dependencies"><a href="#dependencies">Dependencies</a></h2>
 <ul>
 <li><a href="https://ghub.io/axios">axios</a>: Promise based HTTP client for the browser and node.js</li>
