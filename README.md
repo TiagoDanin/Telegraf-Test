@@ -1,4 +1,4 @@
-# Telegraf Test
+# Telegraf Test [![Codacy Badge](https://api.codacy.com/project/badge/Grade/626063315da84c0fa65f020a864774c4)](https://www.codacy.com/app/tiagodanin/Telegraf-Test?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=TiagoDanin/Telegraf-Test&amp;utm_campaign=Badge_Grade) [![Build Status](https://travis-ci.org/TiagoDanin/Telegraf-Test.svg?branch=master)](https://travis-ci.org/TiagoDanin/Telegraf-Test) [![Known Vulnerabilities](https://snyk.io/test/github/TiagoDanin/Telegraf-Test/badge.svg?targetFile=package.json)](https://snyk.io/test/github/TiagoDanin/Telegraf-Test?targetFile=package.json)
 
 Telegraf Test - Simple Test ToolKit of Telegram Bots
 
@@ -78,15 +78,15 @@ test.sendMessageWithText('/ping')
 
 #### Set & Get Objects
 
-- **setUser({**[params](https://https://core.telegram.org/bots/api)**})**
+- **setUser({**[params](https://core.telegram.org/bots/api#user)**})**
 
-- **setChat({**[params](https://https://core.telegram.org/bots/api)**})**
+- **setChat({**[params](https://core.telegram.org/bots/api#chat)**})**
 
-- **setMessage({**[params](https://https://core.telegram.org/bots/api)**})**
+- **setMessage({**[params](https://core.telegram.org/bots/api#message)**})**
 
-- **setInlineQuery({**[params](https://https://core.telegram.org/bots/api)**})**
+- **setInlineQuery({**[params](https://core.telegram.org/bots/api#inlinequery)**})**
 
-- **setCallbackQuery({**[params](https://https://core.telegram.org/bots/api)**})**
+- **setCallbackQuery({**[params](https://core.telegram.org/bots/api#callbackquery)**})**
 
 - **setUpdateId(id: Number)**
 > Update id.</br>
@@ -96,12 +96,12 @@ test.sendMessageWithText('/ping')
 
 Return request of [axios](https://github.com/axios/axios).
 
-- **sendUpdate({**[params](https://https://core.telegram.org/bots/api)**})**
-- **sendMessage({**[params](https://https://core.telegram.org/bots/api)**})**
-- **sendMessageWithText(text: String, {**[params](https://https://core.telegram.org/bots/api)**})**
-- **sendInlineQuery(query: String, {**[params](https://https://core.telegram.org/bots/api)**})**
-- **sendCallbackQuery({**[params](https://https://core.telegram.org/bots/api)**})**
-- **sendCallbackQueryWithData(data: String, {**[params](https://https://core.telegram.org/bots/api)**})**
+- **sendUpdate({**[params](https://core.telegram.org/bots/api#update)**})**
+- **sendMessage({**[params](https://core.telegram.org/bots/api#message)**})**
+- **sendMessageWithText(text: String, {**[params](https://core.telegram.org/bots/api#message)**})**
+- **sendInlineQuery(query: String, {**[params](https://core.telegram.org/bots/api#inlinequery)**})**
+- **sendCallbackQuery({**[params](https://core.telegram.org/bots/api#callbackquery)**})**
+- **sendCallbackQueryWithData(data: String, {**[params](https://core.telegram.org/bots/api#callbackquery)**})**
 
 ### Using with a Test Framework
 
@@ -125,7 +125,7 @@ Run with `$ mocha --exit --timeout 100000`
 
 ### Using Debug
 
-Set environment variables `DEBUG=telgraf:test`
+Set environment variables `DEBUG=telgraf:test`.
 
 ## Dependencies
 
