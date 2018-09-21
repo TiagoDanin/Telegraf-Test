@@ -82,12 +82,126 @@ baseURL: https://tiagodanin.github.io
 
 <div class="uk-container">
 	<h1 id="telegraf-test"><a href="#telegraf-test">Telegraf Test</a></h1>
-<p>Telegraf Test - Simple Test Framework of Telegram Bots</p>
+<p>Telegraf Test - Simple Test ToolKit of Telegram Bots</p>
+<h2 id="features"><a href="#features">Features</a></h2>
+<ul>
+<li>Compatible with <a href="http://telegraf.js.org">Telegraf</a> &#x3C;3.</li>
+<li>Send message, inline query and callback query.</li>
+<li>Work in local network.</li>
+</ul>
 <h2 id="installation"><a href="#installation">Installation</a></h2>
 <p>This is a <a href="https://nodejs.org/">Node.js</a> module available through the
 <a href="https://www.npmjs.com/">npm registry</a>. It can be installed using the
 <a href="https://docs.npmjs.com/getting-started/installing-npm-packages-locally"><code>npm</code></a> command line tools.</p>
 <pre><code class="hljs language-sh">npm install telegraf-test --save</code></pre>
+<h2 id="how-to-use"><a href="#how-to-use">How to Use</a></h2>
+<h3 id="example"><a href="#example">Example</a></h3>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> Telegraf = <span class="hljs-built_in">require</span>(<span class="hljs-string">'telegraf'</span>)
+<span class="hljs-keyword">const</span> TelegrafTest = <span class="hljs-built_in">require</span>(<span class="hljs-string">'telegraf-test'</span>)
+
+<span class="hljs-keyword">const</span> port = <span class="hljs-number">3000</span>
+<span class="hljs-keyword">const</span> secretPath = <span class="hljs-string">'secret-path'</span>
+
+<span class="hljs-keyword">const</span> bot = <span class="hljs-keyword">new</span> Telegraf(<span class="hljs-string">'ABCD:1234567890'</span>)
+<span class="hljs-keyword">const</span> test = <span class="hljs-keyword">new</span> TelegrafTest({
+	<span class="hljs-attr">url</span>: <span class="hljs-string">`http://127.0.0.1:<span class="hljs-subst">${port}</span>/<span class="hljs-subst">${secretPath}</span>`</span>
+})
+
+test.setUser({
+	<span class="hljs-attr">id</span>: <span class="hljs-number">1234</span>,
+	<span class="hljs-attr">username</span>: <span class="hljs-string">'@Jack'</span>
+	<span class="hljs-comment">//...//</span>
+}) <span class="hljs-comment">/*return {
+	id: 1234,
+	is_bot: false,
+	first_name: 'FIST-NAME',
+	last_name: '',
+	username: '@Jack',
+	language_code: 'en-US'
+}*/</span>
+
+bot.hears(<span class="hljs-regexp">/ping/i</span>, (ctx) => {
+	ctx.reply(<span class="hljs-string">'Pong!'</span>)
+})
+
+bot.startWebhook(<span class="hljs-string">`/<span class="hljs-subst">${secretPath}</span>`</span>, <span class="hljs-literal">null</span>, port)
+
+test.sendMessageWithText(<span class="hljs-string">'/ping'</span>)
+	.then(<span class="hljs-function">(<span class="hljs-params">res</span>) =></span> {
+		<span class="hljs-built_in">console</span>.log(res.data)
+		<span class="hljs-comment">//return { method: 'sendMessage', chat_id: 1234567890, text: 'Pong!' }</span>
+	})
+	.catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =></span> {
+		<span class="hljs-built_in">console</span>.error(err)
+	})</code></pre>
+<h3 id="options-of-class-telegraftestoptions"><a href="#options-of-class-telegraftestoptions">Options of Class <code>TelegrafTest({options})</code></a></h3>
+<ul>
+<li>
+<p><strong>url</strong> - String</p>
+<blockquote>
+<p>Webhook url of your bot.</br>
+Default value: <code>http://127.0.0.1:3000/secret-path</code></p>
+</blockquote>
+</li>
+<li>
+<p><strong>axios</strong> - Object</p>
+<blockquote>
+<p>Config/option of Axios.</br>
+Default value: <code>{headers: {'content-type': 'application/json'}, method: 'POST'}</code></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="api"><a href="#api">API</a></h3>
+<h4 id="set--get-objects"><a href="#set--get-objects">Set &#x26; Get Objects</a></h4>
+<ul>
+<li>
+<p><strong>setUser({</strong><a href="https://https://core.telegram.org/bots/api">params</a><strong>})</strong></p>
+</li>
+<li>
+<p><strong>setChat({</strong><a href="https://https://core.telegram.org/bots/api">params</a><strong>})</strong></p>
+</li>
+<li>
+<p><strong>setMessage({</strong><a href="https://https://core.telegram.org/bots/api">params</a><strong>})</strong></p>
+</li>
+<li>
+<p><strong>setInlineQuery({</strong><a href="https://https://core.telegram.org/bots/api">params</a><strong>})</strong></p>
+</li>
+<li>
+<p><strong>setCallbackQuery({</strong><a href="https://https://core.telegram.org/bots/api">params</a><strong>})</strong></p>
+</li>
+<li>
+<p><strong>setUpdateId(id: Number)</strong></p>
+<blockquote>
+<p>Update id.</br>
+Default value: Start in <code>0</code></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="send-requests"><a href="#send-requests">Send Requests</a></h4>
+<p>Return request of <a href="https://github.com/axios/axios">axios</a>.</p>
+<ul>
+<li><strong>sendUpdate({</strong><a href="https://https://core.telegram.org/bots/api">params</a><strong>})</strong></li>
+<li><strong>sendMessage({</strong><a href="https://https://core.telegram.org/bots/api">params</a><strong>})</strong></li>
+<li><strong>sendMessageWithText(text: String, {</strong><a href="https://https://core.telegram.org/bots/api">params</a><strong>})</strong></li>
+<li><strong>sendInlineQuery(query: String, {</strong><a href="https://https://core.telegram.org/bots/api">params</a><strong>})</strong></li>
+<li><strong>sendCallbackQuery({</strong><a href="https://https://core.telegram.org/bots/api">params</a><strong>})</strong></li>
+<li><strong>sendCallbackQueryWithData(data: String, {</strong><a href="https://https://core.telegram.org/bots/api">params</a><strong>})</strong></li>
+</ul>
+<h3 id="using-with-a-test-framework"><a href="#using-with-a-test-framework">Using with a Test Framework</a></h3>
+<p>You create a test suite with
+<a href="https://mochajs.org">Mocha</a> and <a href="https://github.com/Automattic/expect.js">ExpectJS</a>.</p>
+<p>Example <code>test.js</code>:</p>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> expect = <span class="hljs-built_in">require</span>(<span class="hljs-string">'expect.js'</span>)
+describe(<span class="hljs-string">'bot'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+	it(<span class="hljs-string">'/ping'</span>, <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+		<span class="hljs-keyword">var</span> r = <span class="hljs-keyword">await</span> test.sendMessageWithText(<span class="hljs-string">'/ping'</span>)
+		expect(r.data.text).to.be.a(<span class="hljs-string">'string'</span>)
+		expect(r.data.text).to.contain(<span class="hljs-string">'Pong!'</span>)
+	})
+})</code></pre>
+<p>Run with <code>$ mocha --exit --timeout 100000</code></p>
+<h3 id="using-debug"><a href="#using-debug">Using Debug</a></h3>
+<p>Set environment variables <code>DEBUG=telgraf:test</code></p>
 <h2 id="dependencies"><a href="#dependencies">Dependencies</a></h2>
 <ul>
 <li><a href="https://ghub.io/axios">axios</a>: Promise based HTTP client for the browser and node.js</li>
@@ -96,7 +210,6 @@ baseURL: https://tiagodanin.github.io
 <h2 id="dev-dependencies"><a href="#dev-dependencies">Dev Dependencies</a></h2>
 <ul>
 <li><a href="https://ghub.io/telegraf">telegraf</a>: 📡 Modern Telegram bot framework</li>
-<li><a href="https://ghub.io/expect.js">expect.js</a>: BDD style assertions for node and the browser.</li>
 <li><a href="https://ghub.io/mocha">mocha</a>: simple, flexible, fun test framework</li>
 </ul>
 <h2 id="license"><a href="#license">License</a></h2>
