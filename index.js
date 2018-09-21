@@ -1,5 +1,6 @@
 const axios = require('axios')
 const debug = require('debug')
+const express = require('express')
 
 const log = debug('telegraf:test')
 
@@ -8,17 +9,33 @@ class TelegrafTest {
 		this.options = {
 			url: 'http://127.0.0.1:3000/secret-path',
 			axios: {},
+			port: 2000,
+			token: 'ABCD:1234567890',
 			...options
 		}
 		this.updateId = 0
+		this.setBot({})
 		this.setUser({})
 		this.setChat({})
 		this.setMessage({})
 		this.setInlineQuery({})
 		this.setCallbackQuery({})
+		this.server = express()
 	}
 
 	//Methods start in set**
+	setBot (bot) {
+		this.bot = {
+			id: 1234,
+			is_bot: true,
+			first_name: 'BOT',
+			username: '@bot',
+			...bot
+		}
+		log('New bot', this.bot)
+		return this.bot
+	}
+
 	setUser (user) {
 		this.user = {
 			id: 1234567890,
@@ -156,6 +173,38 @@ class TelegrafTest {
 			...options
 		})
 		return this.sendUpdate({callback_query: callbackQuery})
+	}
+
+	startServer () {
+		this.server.get('/', (req, res) => {
+			var index = `
+Hello World!</br>
+Web server of Telegraf Test by Tiago Danin</br>
+https://github.com/TiagoDanin/Telegraf-Test
+			`
+			res.send(index)
+		})
+
+		var methods = {
+			getMe: (query) => {
+				return JSON.stringify(this.bot)
+			}
+		}
+
+		this.server.get('/bot:token/:method', (req, res) => {
+			if (req.params.token != this.options.token) {
+				return res.send('{}') //TODO: Return invalid token
+			}
+			if (req.method == 'GET' && methods[req.params.method]) {
+				return res.send(methods[req.params.method](req.query))
+			} else {
+				return res.send('{}')
+			}
+		})
+
+		this.server.listen(this.options.port, () => {
+			log('Telegraf Test Server runnig in port: ', this.options.port)
+		})
 	}
 
 }
