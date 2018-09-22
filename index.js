@@ -118,7 +118,7 @@ class TelegrafTest {
 	//Methods start in send**
 	sendUpdate (update) {
 		this.updateId++
-		log('Send via webhook', this.options.url, {
+		log('Send via WebHook ', {
 			update_id: this.updateId,
 			...update
 		})
