@@ -85,7 +85,9 @@ baseURL: https://tiagodanin.github.io
 <p>Telegraf Test - Simple Test ToolKit of Telegram Bots</p>
 <h2 id="features"><a href="#features">Features</a></h2>
 <ul>
+<li>Telegram bot api server emulator.</li>
 <li>Compatible with <a href="http://telegraf.js.org">Telegraf</a> &#x3C;3.</li>
+<li>Compatible with test framework.</li>
 <li>Send message, inline query and callback query.</li>
 <li>Work in local network.</li>
 </ul>
@@ -150,25 +152,30 @@ Default value: <code>http://127.0.0.1:3000/secret-path</code></p>
 Default value: <code>{headers: {'content-type': 'application/json'}, method: 'POST'}</code></p>
 </blockquote>
 </li>
+<li>
+<p><strong>port</strong> - Number</p>
+<blockquote>
+<p>Server emulator port.</br>
+Default value: <code>2000</code></p>
+</blockquote>
+</li>
+<li>
+<p><strong>token</strong> - String</p>
+<blockquote>
+<p>Bot token.</br>
+Default value: <code>ABCD:1234567890</code></p>
+</blockquote>
+</li>
 </ul>
 <h3 id="api"><a href="#api">API</a></h3>
 <h4 id="set--get-objects"><a href="#set--get-objects">Set &#x26; Get Objects</a></h4>
 <ul>
-<li>
-<p><strong>setUser({</strong><a href="https://core.telegram.org/bots/api#user">params</a><strong>})</strong></p>
-</li>
-<li>
-<p><strong>setChat({</strong><a href="https://core.telegram.org/bots/api#chat">params</a><strong>})</strong></p>
-</li>
-<li>
-<p><strong>setMessage({</strong><a href="https://core.telegram.org/bots/api#message">params</a><strong>})</strong></p>
-</li>
-<li>
-<p><strong>setInlineQuery({</strong><a href="https://core.telegram.org/bots/api#inlinequery">params</a><strong>})</strong></p>
-</li>
-<li>
-<p><strong>setCallbackQuery({</strong><a href="https://core.telegram.org/bots/api#callbackquery">params</a><strong>})</strong></p>
-</li>
+<li><strong>setBot({</strong><a href="https://core.telegram.org/bots/api#user">params</a><strong>})</strong></li>
+<li><strong>setUser({</strong><a href="https://core.telegram.org/bots/api#user">params</a><strong>})</strong></li>
+<li><strong>setChat({</strong><a href="https://core.telegram.org/bots/api#chat">params</a><strong>})</strong></li>
+<li><strong>setMessage({</strong><a href="https://core.telegram.org/bots/api#message">params</a><strong>})</strong></li>
+<li><strong>setInlineQuery({</strong><a href="https://core.telegram.org/bots/api#inlinequery">params</a><strong>})</strong></li>
+<li><strong>setCallbackQuery({</strong><a href="https://core.telegram.org/bots/api#callbackquery">params</a><strong>})</strong></li>
 <li>
 <p><strong>setUpdateId(id: Number)</strong></p>
 <blockquote>
@@ -176,6 +183,15 @@ Default value: <code>{headers: {'content-type': 'application/json'}, method: 'PO
 Default value: Start in <code>0</code></p>
 </blockquote>
 </li>
+</ul>
+<h3 id="get-objects"><a href="#get-objects">Get Objects</a></h3>
+<ul>
+<li><strong>getUser()</strong></li>
+<li><strong>getChat()</strong></li>
+<li><strong>getMessage()</strong></li>
+<li><strong>getInlineQuery()</strong></li>
+<li><strong>getCallbackQuery()</strong></li>
+<li><strong>getUpdateId()</strong></li>
 </ul>
 <h4 id="send-requests"><a href="#send-requests">Send Requests</a></h4>
 <p>Return request of <a href="https://github.com/axios/axios">axios</a>.</p>
@@ -187,6 +203,69 @@ Default value: Start in <code>0</code></p>
 <li><strong>sendCallbackQuery({</strong><a href="https://core.telegram.org/bots/api#callbackquery">params</a><strong>})</strong></li>
 <li><strong>sendCallbackQueryWithData(data: String, {</strong><a href="https://core.telegram.org/bots/api#callbackquery">params</a><strong>})</strong></li>
 </ul>
+<h4 id="wip-web-server"><a href="#wip-web-server">[WIP] Web Server</a></h4>
+<p>Telegram Bot Api Server Emulator. Start with <code>startServer()</code>.</p>
+<ul>
+<li class="task-list-item"><input type="checkbox" disabled> <a href="https://core.telegram.org/bots/api#getme">getMe</a></li>
+</ul>
+<!--
+- [ ] [getMe](https://core.telegram.org/bots/api#getme)
+- [ ] [getUpdates](https://core.telegram.org/bots/api#getupdates)
+- [ ] [setWebhook](https://core.telegram.org/bots/api#setwebhook)
+- [ ] [sendMessage](https://core.telegram.org/bots/api#sendmessage)
+- [ ] [forwardMessage](https://core.telegram.org/bots/api#forwardmessage)
+- [ ] [sendPhoto](https://core.telegram.org/bots/api#sendphoto)
+- [ ] [sendAudio](https://core.telegram.org/bots/api#sendaudio)
+- [ ] [sendDocument](https://core.telegram.org/bots/api#senddocument)
+- [ ] [sendVideo](https://core.telegram.org/bots/api#sendvideo)
+- [ ] [sendVoice](https://core.telegram.org/bots/api#sendvoice)
+- [ ] [sendVideoNote](https://core.telegram.org/bots/api#sendvideonote)
+- [ ] [sendMediaGroup](https://core.telegram.org/bots/api#sendmediagroup)
+- [ ] [sendLocation](https://core.telegram.org/bots/api#sendlocation)
+- [ ] [editMessageLiveLocation](https://core.telegram.org/bots/api#editmessagelivelocation)
+- [ ] [stopMessageLiveLocation](https://core.telegram.org/bots/api#stopmessagelivelocation)
+- [ ] [sendVenue](https://core.telegram.org/bots/api#sendvenue)
+- [ ] [sendContact](https://core.telegram.org/bots/api#sendcontact)
+- [ ] [getUserProfilePhotos](https://core.telegram.org/bots/api#getuserprofilephotos)
+- [ ] [getFile](https://core.telegram.org/bots/api#getfile)
+- [ ] [kickChatMember](https://core.telegram.org/bots/api#kickchatmember)
+- [ ] [unbanChatMember](https://core.telegram.org/bots/api#unbanchatmember)
+- [ ] [restrictChatMember](https://core.telegram.org/bots/api#restrictchatmember)
+- [ ] [promoteChatMember](https://core.telegram.org/bots/api#promotechatmember)
+- [ ] [exportChatInviteLink](https://core.telegram.org/bots/api#exportchatinvitelink)
+- [ ] [setChatPhoto](https://core.telegram.org/bots/api#setchatphoto)
+- [ ] [deleteChatPhoto](https://core.telegram.org/bots/api#deletechatphoto)
+- [ ] [setChatTitle](https://core.telegram.org/bots/api#setchattitle)
+- [ ] [setChatDescription](https://core.telegram.org/bots/api#setchatdescription)
+- [ ] [pinChatMessage](https://core.telegram.org/bots/api#pinchatmessage)
+- [ ] [unpinChatMessage](https://core.telegram.org/bots/api#unpinchatmessage)
+- [ ] [leaveChat](https://core.telegram.org/bots/api#leavechat)
+- [ ] [getChat](https://core.telegram.org/bots/api#getchat)
+- [ ] [getChatAdministrators](https://core.telegram.org/bots/api#getchatadministrators)
+- [ ] [getChatMembersCount](https://core.telegram.org/bots/api#getchatmemberscount)
+- [ ] [getChatMember](https://core.telegram.org/bots/api#getchatmember)
+- [ ] [setChatStickerSet](https://core.telegram.org/bots/api#setchatstickerset)
+- [ ] [deleteChatStickerSet](https://core.telegram.org/bots/api#deletechatstickerset)
+- [ ] [answerCallbackQuery](https://core.telegram.org/bots/api#answercallbackquery)
+- [ ] [editMessageText](https://core.telegram.org/bots/api#editmessagetext)
+- [ ] [editMessageCaption](https://core.telegram.org/bots/api#editmessagecaption)
+- [ ] [editMessageReplyMarkup](https://core.telegram.org/bots/api#editmessagereplymarkup)
+- [ ] [deleteMessage](https://core.telegram.org/bots/api#deletemessage)
+- [ ] [sendSticker](https://core.telegram.org/bots/api#sendsticker)
+- [ ] [getStickerSet](https://core.telegram.org/bots/api#getstickerset)
+- [ ] [uploadStickerFile](https://core.telegram.org/bots/api#uploadstickerfile)
+- [ ] [createNewStickerSet](https://core.telegram.org/bots/api#createnewstickerset)
+- [ ] [addStickerToSet](https://core.telegram.org/bots/api#addstickertoset)
+- [ ] [setStickerPositionInSet](https://core.telegram.org/bots/api#setstickerpositioninset)
+- [ ] [deleteStickerFromSet](https://core.telegram.org/bots/api#deletestickerfromset)
+- [ ] [answerInlineQuery](https://core.telegram.org/bots/api#answerinlinequery)
+- [ ] [sendInvoice](https://core.telegram.org/bots/api#sendinvoice)
+- [ ] [answerShippingQuery](https://core.telegram.org/bots/api#answershippingquery)
+- [ ] [answerPreCheckoutQuery](https://core.telegram.org/bots/api#answerprecheckoutquery)
+- [ ] [sendGame](https://core.telegram.org/bots/api#sendgame)
+- [ ] [setGameScore](https://core.telegram.org/bots/api#setgamescore)
+- [ ] [getGameHighScores](https://core.telegram.org/bots/api#getgamehighscores)
+-->
 <h3 id="using-with-a-test-framework"><a href="#using-with-a-test-framework">Using with a Test Framework</a></h3>
 <p>You create a test suite with
 <a href="https://mochajs.org">Mocha</a> and <a href="https://github.com/Automattic/expect.js">ExpectJS</a>.</p>
