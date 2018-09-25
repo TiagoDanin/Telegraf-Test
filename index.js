@@ -68,7 +68,7 @@ class TelegrafTest {
 	setMessage (message) {
 		var message_id = 1
 		if (this.message && this.message.message_id) {
-			message_id = Math.floor(message_id) + 1
+			message_id = Math.floor(this.message.message_id) + 1
 		}
 		//TODO: Add entities
 		this.message = {
@@ -112,6 +112,35 @@ class TelegrafTest {
 	setUpdateId (id) {
 		this.updateId = Math.floor(id)
 		log('New update id', this.updateId)
+		return this.updateId
+	}
+
+	//Methods start in get**
+	getBot () {
+		return this.bot
+	}
+
+	getUser () {
+		return this.user
+	}
+
+	getChat () {
+		return this.chat
+	}
+
+	getMessage () {
+		return this.message
+	}
+
+	getInlineQuery () {
+		return this.inline_query
+	}
+
+	getCallbackQuery () {
+		return this.callback_query
+	}
+
+	getUpdateId () {
 		return this.updateId
 	}
 
@@ -189,6 +218,173 @@ https://github.com/TiagoDanin/Telegraf-Test
 			getMe: (query) => {
 				return JSON.stringify(this.bot)
 			}
+			/*
+			getUpdates: (query) => {
+				return JSON.stringify()
+			},
+			setWebhook: (query) => {
+				return JSON.stringify()
+			},
+			sendMessage: (query) => {
+				return JSON.stringify()
+			},
+			forwardMessage: (query) => {
+				return JSON.stringify()
+			},
+			sendPhoto: (query) => {
+				return JSON.stringify()
+			},
+			sendAudio: (query) => {
+				return JSON.stringify()
+			},
+			sendDocument: (query) => {
+				return JSON.stringify()
+			},
+			sendVideo: (query) => {
+				return JSON.stringify()
+			},
+			sendVoice: (query) => {
+				return JSON.stringify()
+			},
+			sendVideoNote: (query) => {
+				return JSON.stringify()
+			},
+			sendMediaGroup: (query) => {
+				return JSON.stringify()
+			},
+			sendLocation: (query) => {
+				return JSON.stringify()
+			},
+			editMessageLiveLocation: (query) => {
+				return JSON.stringify()
+			},
+			stopMessageLiveLocation: (query) => {
+				return JSON.stringify()
+			},
+			sendVenue: (query) => {
+				return JSON.stringify()
+			},
+			sendContact: (query) => {
+				return JSON.stringify()
+			},
+			getUserProfilePhotos: (query) => {
+				return JSON.stringify()
+			},
+			getFile: (query) => {
+				return JSON.stringify()
+			},
+			kickChatMember: (query) => {
+				return JSON.stringify()
+			},
+			unbanChatMember: (query) => {
+				return JSON.stringify()
+			},
+			restrictChatMember: (query) => {
+				return JSON.stringify()
+			},
+			promoteChatMember: (query) => {
+				return JSON.stringify()
+			},
+			exportChatInviteLink: (query) => {
+				return JSON.stringify()
+			},
+			setChatPhoto: (query) => {
+				return JSON.stringify()
+			},
+			deleteChatPhoto: (query) => {
+				return JSON.stringify()
+			},
+			setChatTitle: (query) => {
+				return JSON.stringify()
+			},
+			setChatDescription: (query) => {
+				return JSON.stringify()
+			},
+			pinChatMessage: (query) => {
+				return JSON.stringify()
+			},
+			unpinChatMessage: (query) => {
+				return JSON.stringify()
+			},
+			leaveChat: (query) => {
+				return JSON.stringify()
+			},
+			getChat: (query) => {
+				return JSON.stringify()
+			},
+			getChatAdministrators: (query) => {
+				return JSON.stringify()
+			},
+			getChatMembersCount: (query) => {
+				return JSON.stringify()
+			},
+			getChatMember: (query) => {
+				return JSON.stringify()
+			},
+			setChatStickerSet: (query) => {
+				return JSON.stringify()
+			},
+			deleteChatStickerSet: (query) => {
+				return JSON.stringify()
+			},
+			answerCallbackQuery: (query) => {
+				return JSON.stringify()
+			},
+			editMessageText: (query) => {
+				return JSON.stringify()
+			},
+			editMessageCaption: (query) => {
+				return JSON.stringify()
+			},
+			editMessageReplyMarkup: (query) => {
+				return JSON.stringify()
+			},
+			deleteMessage: (query) => {
+				return JSON.stringify()
+			},
+			sendSticker: (query) => {
+				return JSON.stringify()
+			},
+			getStickerSet: (query) => {
+				return JSON.stringify()
+			},
+			uploadStickerFile: (query) => {
+				return JSON.stringify()
+			},
+			createNewStickerSet: (query) => {
+				return JSON.stringify()
+			},
+			addStickerToSet: (query) => {
+				return JSON.stringify()
+			},
+			setStickerPositionInSet: (query) => {
+				return JSON.stringify()
+			},
+			deleteStickerFromSet: (query) => {
+				return JSON.stringify()
+			},
+			answerInlineQuery: (query) => {
+				return JSON.stringify()
+			},
+			sendInvoice: (query) => {
+				return JSON.stringify()
+			},
+			answerShippingQuery: (query) => {
+				return JSON.stringify()
+			},
+			answerPreCheckoutQuery: (query) => {
+				return JSON.stringify()
+			},
+			sendGame: (query) => {
+				return JSON.stringify()
+			},
+			setGameScore: (query) => {
+				return JSON.stringify()
+			},
+			getGameHighScores: (query) => {
+				return JSON.stringify()
+			}
+			*/
 		}
 
 		this.server.get('/bot:token/:method', (req, res) => {

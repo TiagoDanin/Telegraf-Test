@@ -37,6 +37,13 @@ bot.on('callback_query', (ctx) => {
 bot.startWebhook(`/${secretPath}`, null, port)
 
 describe('Telegraf Test', function() {
+	it('setBot()', async function() {
+		var bot = test.setBot({
+			username: '@Tiagobot'
+		})
+		assert.equal(bot.username, '@Tiagobot')
+	})
+
 	it('setUser()', async function() {
 		var user = test.setUser({
 			id: 1234,
@@ -79,6 +86,34 @@ describe('Telegraf Test', function() {
 	it('setUpdateId()', async function() {
 		var id = test.setUpdateId(6)
 		assert.equal(id, 6)
+	})
+
+	it('getBot', async function() {
+		assert.equal(test.getBot(), test.bot)
+	})
+
+	it('getUser', async function() {
+		assert.equal(test.getUser(), test.user)
+	})
+
+	it('getChat', async function() {
+		assert.equal(test.getChat(), test.chat)
+	})
+
+	it('getMessage', async function() {
+		assert.equal(test.getMessage(), test.message)
+	})
+
+	it('getInlineQuery', async function() {
+		assert.equal(test.getInlineQuery(), test.inline_query)
+	})
+
+	it('getCallbackQuery', async function() {
+		assert.equal(test.getCallbackQuery(), test.callback_query)
+	})
+
+	it('getUpdateId', async function() {
+		assert.equal(test.getUpdateId(), test.updateId)
 	})
 
 	it('sendUpdate()', async function() {
