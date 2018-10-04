@@ -20,6 +20,10 @@ class TelegrafTest {
 		this.setMessage({})
 		this.setInlineQuery({})
 		this.setCallbackQuery({})
+		this.setAllowedUpdates()
+		this.setWebhook({
+			url: this.options.url
+		})
 		this.server = express()
 	}
 
@@ -29,7 +33,8 @@ class TelegrafTest {
 			id: 1234,
 			is_bot: true,
 			first_name: 'BOT',
-			username: '@bot',
+			username: 'bot',
+			...this.bot,
 			...bot
 		}
 		log('New bot', this.bot)
@@ -44,6 +49,7 @@ class TelegrafTest {
 			last_name: '',
 			username: 'USERNAME',
 			language_code: 'en-US',
+			...this.user,
 			...user
 		}
 		log('New user', this.user)
@@ -59,6 +65,7 @@ class TelegrafTest {
 			first_name: 'FIST-NAME',
 			last_name: 'LAST-NAME',
 			all_members_are_administrators: false,
+			...this.chat,
 			...chat
 		}
 		log('New chat', this.chat)
@@ -115,6 +122,42 @@ class TelegrafTest {
 		return this.updateId
 	}
 
+	setWebhook (webhook) {
+		this.webhook = {
+			url: '',
+			has_custom_certificate: false,
+			pending_update_count: 0,
+			last_error_date: `${+ new Date()}`,
+			last_error_message: 'Init Telegraf Test',
+			max_connections: 40,
+			allowed_updates: [
+				...this.allowedUpdates
+			],
+			...this.webhook,
+			...webhook
+		}
+		log('New webhook info', this.webhook)
+		return this.webhook
+	}
+
+	setAllowedUpdates (updates) {
+		this.allowedUpdates = [
+			'message',
+			'channel_post',
+			'edited_channel_post',
+			'inline_query',
+			'chosen_inline_result',
+			'callback_query',
+			'shipping_query',
+			'pre_checkout_query'
+		]
+		if (updates) {
+			this.allowedUpdates = updates
+		}
+		log('New allowedUpdates', this.allowedUpdates)
+		return this.allowedUpdates
+	}
+
 	//Methods start in get**
 	getBot () {
 		return this.bot
@@ -144,9 +187,30 @@ class TelegrafTest {
 		return this.updateId
 	}
 
+	getWebhook () {
+		return this.webhook
+	}
+
+	getAllowedUpdates () {
+		return this.allowedUpdates
+	}
+
 	//Methods start in send**
 	sendUpdate (update) {
 		this.updateId++
+		var ignored = true
+		for (let updateType of this.allowedUpdates) {
+			if (update[updateType]) {
+				ignored = false
+			}
+		}
+		if (ignored) {
+			log('Update ignored (check getAllowedUpdates()) ', {
+				update_id: this.updateId,
+				...update
+			})
+			return false
+		}
 		log('Send via WebHook ', {
 			update_id: this.updateId,
 			...update
@@ -216,13 +280,52 @@ https://github.com/TiagoDanin/Telegraf-Test
 
 		var methods = {
 			getMe: (query) => {
-				return JSON.stringify(this.bot)
+				return {
+					ok: true,
+					result: {
+						...this.bot
+					}
+				}
+			},
+			setWebhook: (query) => {
+				var output = {
+					ok: true,
+					result: true,
+					description: 'Webhook is already deleted'
+				}
+				if (query.length >= 1) {
+					this.setWebhook(query)
+					output.description = 'Webhook was set'
+				} else {
+					if (this.webhook.url != '') {
+						output.description = 'Webhook was deleted'
+						this.setWebhook({
+							url: ''
+						})
+					}
+				}
+				return output
+			},
+			deleteWebhook: (query) => {
+				this.setWebhook({
+					url: ''
+				})
+				return {
+					ok: true,
+					result: true,
+					description: 'Webhook was deleted'
+				}
+			},
+			getWebhookInfo: (query) => {
+				return {
+					ok: true,
+					result: {
+						...this.webhook
+					}
+				}
 			}
 			/*
 			getUpdates: (query) => {
-				return JSON.stringify()
-			},
-			setWebhook: (query) => {
 				return JSON.stringify()
 			},
 			sendMessage: (query) => {
@@ -389,12 +492,20 @@ https://github.com/TiagoDanin/Telegraf-Test
 
 		this.server.get('/bot:token/:method', (req, res) => {
 			if (req.params.token != this.options.token) {
-				return res.send('{}') //TODO: Return invalid token
+				return res.json({
+					ok: false,
+					error_code: 401,
+					description: 'Unauthorized'
+				})
 			}
-			if (req.method == 'GET' && methods[req.params.method]) {
-				return res.send(methods[req.params.method](req.query))
+			if (methods[req.params.method]) {
+				return res.json(methods[req.params.method](req.query))
 			} else {
-				return res.send('{}')
+				return res.json({
+					ok: false,
+					error_code: 401,
+					description: 'Not Found: method not found in Telegraf Test'
+				})
 			}
 		})
 
