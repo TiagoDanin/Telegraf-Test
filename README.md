@@ -94,6 +94,8 @@ test.sendMessageWithText('/ping')
 - **setUpdateId(id: Number)**
 > Update id.</br>
 > Default value: Start in `0`
+- **setWebhook({**[params](https://core.telegram.org/bots/api#setwebhook)**})**
+- **setAllowedUpdates({**[params](https://core.telegram.org/bots/api#update)**})**
 
 ### Get Objects
 
@@ -103,10 +105,12 @@ test.sendMessageWithText('/ping')
 - **getInlineQuery()**
 - **getCallbackQuery()**
 - **getUpdateId()**
+- **getWebhook()**
+- **getAllowedUpdates()**
 
 #### Send Requests
 
-Return request of [axios](https://github.com/axios/axios).
+Return request of [axios](https://github.com/axios/axios) or `false` in updates ignored.
 
 - **sendUpdate({**[params](https://core.telegram.org/bots/api#update)**})**
 - **sendMessage({**[params](https://core.telegram.org/bots/api#message)**})**
@@ -119,12 +123,13 @@ Return request of [axios](https://github.com/axios/axios).
 
 Telegram Bot Api Server Emulator. Start with `startServer()`.
 
-- [ ] [getMe](https://core.telegram.org/bots/api#getme)
+- [x] [getMe](https://core.telegram.org/bots/api#getme)
+- [x] [setWebhook](https://core.telegram.org/bots/api#setwebhook)
+- [x] [getWebhookInfo](https://core.telegram.org/bots/api#deletewebhook)
+- [x] [setWebhook](https://core.telegram.org/bots/api#getwebhookinfo)
 
 <!--
-- [ ] [getMe](https://core.telegram.org/bots/api#getme)
 - [ ] [getUpdates](https://core.telegram.org/bots/api#getupdates)
-- [ ] [setWebhook](https://core.telegram.org/bots/api#setwebhook)
 - [ ] [sendMessage](https://core.telegram.org/bots/api#sendmessage)
 - [ ] [forwardMessage](https://core.telegram.org/bots/api#forwardmessage)
 - [ ] [sendPhoto](https://core.telegram.org/bots/api#sendphoto)

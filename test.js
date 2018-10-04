@@ -9,6 +9,7 @@ const bot = new Telegraf('ABCD:1234567890')
 const test = new TelegrafTest({
 	url: `http://127.0.0.1:${port}/${secretPath}`
 })
+test.startServer()
 
 bot.hears(/ping/i, (ctx) => {
 	ctx.reply('Pong!')
@@ -39,9 +40,9 @@ bot.startWebhook(`/${secretPath}`, null, port)
 describe('Telegraf Test', function() {
 	it('setBot()', async function() {
 		var bot = test.setBot({
-			username: '@Tiagobot'
+			username: 'Tiagobot'
 		})
-		assert.equal(bot.username, '@Tiagobot')
+		assert.equal(bot.username, 'Tiagobot')
 	})
 
 	it('setUser()', async function() {
@@ -88,6 +89,26 @@ describe('Telegraf Test', function() {
 		assert.equal(id, 6)
 	})
 
+	it('setWebhook()', async function() {
+		var webhook = test.setWebhook()
+		assert.equal(webhook.url, test.webhook.url)
+		assert.equal(webhook.allowed_updates.toString(), test.getAllowedUpdates().toString())
+	})
+
+	it('setAllowedUpdates()', async function() {
+		var updatesType = test.setAllowedUpdates()
+		assert.equal(updatesType.toString(), [
+			'message',
+			'channel_post',
+			'edited_channel_post',
+			'inline_query',
+			'chosen_inline_result',
+			'callback_query',
+			'shipping_query',
+			'pre_checkout_query'
+		].toString())
+	})
+
 	it('getBot', async function() {
 		assert.equal(test.getBot(), test.bot)
 	})
@@ -116,9 +137,17 @@ describe('Telegraf Test', function() {
 		assert.equal(test.getUpdateId(), test.updateId)
 	})
 
+	it('getWebhook', async function() {
+		assert.equal(test.getWebhook(), test.webhook)
+	})
+
+	it('getAllowedUpdates', async function() {
+		assert.equal(test.getAllowedUpdates(), test.allowedUpdates)
+	})
+
 	it('sendUpdate()', async function() {
 		var r = await test.sendUpdate({})
-		assert.equal(r.data, '')
+		assert.equal(r, false)
 	})
 
 	it('sendMessage()', async function() {
