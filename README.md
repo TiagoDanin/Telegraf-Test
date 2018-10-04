@@ -213,6 +213,7 @@ Set environment variables `DEBUG=telgraf:test`.
 
 - [axios](https://ghub.io/axios): Promise based HTTP client for the browser and node.js
 - [debug](https://ghub.io/debug): small debugging utility
+- [express](https://ghub.io/express): Fast, unopinionated, minimalist web framework
 
 ## Dev Dependencies
 
