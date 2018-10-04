@@ -183,6 +183,8 @@ Default value: <code>ABCD:1234567890</code></p>
 Default value: Start in <code>0</code></p>
 </blockquote>
 </li>
+<li><strong>setWebhook({</strong><a href="https://core.telegram.org/bots/api#setwebhook">params</a><strong>})</strong></li>
+<li><strong>setAllowedUpdates({</strong><a href="https://core.telegram.org/bots/api#update">params</a><strong>})</strong></li>
 </ul>
 <h3 id="get-objects"><a href="#get-objects">Get Objects</a></h3>
 <ul>
@@ -192,9 +194,11 @@ Default value: Start in <code>0</code></p>
 <li><strong>getInlineQuery()</strong></li>
 <li><strong>getCallbackQuery()</strong></li>
 <li><strong>getUpdateId()</strong></li>
+<li><strong>getWebhook()</strong></li>
+<li><strong>getAllowedUpdates()</strong></li>
 </ul>
 <h4 id="send-requests"><a href="#send-requests">Send Requests</a></h4>
-<p>Return request of <a href="https://github.com/axios/axios">axios</a>.</p>
+<p>Return request of <a href="https://github.com/axios/axios">axios</a> or <code>false</code> in updates ignored.</p>
 <ul>
 <li><strong>sendUpdate({</strong><a href="https://core.telegram.org/bots/api#update">params</a><strong>})</strong></li>
 <li><strong>sendMessage({</strong><a href="https://core.telegram.org/bots/api#message">params</a><strong>})</strong></li>
@@ -206,12 +210,13 @@ Default value: Start in <code>0</code></p>
 <h4 id="wip-web-server"><a href="#wip-web-server">[WIP] Web Server</a></h4>
 <p>Telegram Bot Api Server Emulator. Start with <code>startServer()</code>.</p>
 <ul>
-<li class="task-list-item"><input type="checkbox" disabled> <a href="https://core.telegram.org/bots/api#getme">getMe</a></li>
+<li class="task-list-item"><input type="checkbox" checked disabled> <a href="https://core.telegram.org/bots/api#getme">getMe</a></li>
+<li class="task-list-item"><input type="checkbox" checked disabled> <a href="https://core.telegram.org/bots/api#setwebhook">setWebhook</a></li>
+<li class="task-list-item"><input type="checkbox" checked disabled> <a href="https://core.telegram.org/bots/api#deletewebhook">getWebhookInfo</a></li>
+<li class="task-list-item"><input type="checkbox" checked disabled> <a href="https://core.telegram.org/bots/api#getwebhookinfo">setWebhook</a></li>
 </ul>
 <!--
-- [ ] [getMe](https://core.telegram.org/bots/api#getme)
 - [ ] [getUpdates](https://core.telegram.org/bots/api#getupdates)
-- [ ] [setWebhook](https://core.telegram.org/bots/api#setwebhook)
 - [ ] [sendMessage](https://core.telegram.org/bots/api#sendmessage)
 - [ ] [forwardMessage](https://core.telegram.org/bots/api#forwardmessage)
 - [ ] [sendPhoto](https://core.telegram.org/bots/api#sendphoto)
@@ -285,6 +290,7 @@ describe(<span class="hljs-string">'bot'</span>, <span class="hljs-function"><sp
 <ul>
 <li><a href="https://ghub.io/axios">axios</a>: Promise based HTTP client for the browser and node.js</li>
 <li><a href="https://ghub.io/debug">debug</a>: small debugging utility</li>
+<li><a href="https://ghub.io/express">express</a>: Fast, unopinionated, minimalist web framework</li>
 </ul>
 <h2 id="dev-dependencies"><a href="#dev-dependencies">Dev Dependencies</a></h2>
 <ul>
