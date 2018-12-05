@@ -9,7 +9,7 @@
     "express": "4.16.3"
   },
   "devDependencies": {
-    "telegraf": "3.25.1",
+    "telegraf": "3.25.5",
     "mocha": "5.2.0"
   },
   "scripts": {
