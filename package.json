@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "telegraf": "3.28.0",
-    "mocha": "6.1.0"
+    "mocha": "6.1.1"
   },
   "scripts": {
     "test": "mocha --exit --timeout 100000"
