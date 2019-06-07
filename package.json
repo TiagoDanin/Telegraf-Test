@@ -7,7 +7,7 @@
 		"axios": "^0.18.0",
 		"debug": "^4.1.1",
 		"express": "^4.16.3",
-		"snyk": "^1.161.1"
+		"snyk": "^1.174.1"
 	},
 	"devDependencies": {
 		"telegraf": "^3.29.0",
