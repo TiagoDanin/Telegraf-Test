@@ -81,24 +81,26 @@ baseURL: https://tiagodanin.github.io
 
 
 <div class="uk-container">
-	<h1 id="telegraf-test-codacy-badge-build-status-known-vulnerabilities"><a href="#telegraf-test-codacy-badge-build-status-known-vulnerabilities">Telegraf Test <a href="https://www.codacy.com/app/tiagodanin/Telegraf-Test?utm_source=github.com&#x26;utm_medium=referral&#x26;utm_content=TiagoDanin/Telegraf-Test&#x26;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/626063315da84c0fa65f020a864774c4" alt="Codacy Badge"></a> <a href="https://travis-ci.org/TiagoDanin/Telegraf-Test"><img src="https://travis-ci.org/TiagoDanin/Telegraf-Test.svg?branch=master" alt="Build Status"></a> <a href="https://snyk.io/test/github/TiagoDanin/Telegraf-Test?targetFile=package.json"><img src="https://snyk.io/test/github/TiagoDanin/Telegraf-Test/badge.svg?targetFile=package.json" alt="Known Vulnerabilities"></a></a></h1>
+	<h1 id="telegraf-test"><a href="#telegraf-test">Telegraf Test</a></h1>
+<p><a href="https://travis-ci.org/TiagoDanin/Telegraf-Test"><img src="https://img.shields.io/travis/TiagoDanin/Telegraf-Test.svg?branch=master&#x26;style=flat-square" alt="Travis"></a> <a href="https://npmjs.org/package/telegraf-test"><img src="https://img.shields.io/npm/dt/telegraf-test.svg?style=flat-square" alt="Downloads"></a> <a href="https://npmjs.org/package/telegraf-test"><img src="https://img.shields.io/node/v/telegraf-test.svg?style=flat-square" alt="Node"></a> <a href="https://npmjs.org/package/telegraf-test"><img src="https://img.shields.io/npm/v/telegraf-test.svg?style=flat-square" alt="Version"></a> <a href="https://github.com/xojs/xo"><img src="https://img.shields.io/badge/code%20style-XO-red.svg?style=flat-square" alt="XO code style"></a> </p>
 <p>Telegraf Test - Simple Test ToolKit of Telegram Bots</p>
 <h2 id="features"><a href="#features">Features</a></h2>
 <ul>
 <li>Telegram bot api server emulator.</li>
-<li>Compatible with <a href="http://telegraf.js.org">Telegraf</a> &#x3C;3.</li>
-<li>Compatible with test framework.</li>
+<li>Compatible with Telegraf &#x3C;3.</li>
+<li>Compatible with Mocha e others test framework.</li>
 <li>Send message, inline query and callback query.</li>
 <li>Work in local network.</li>
+<li>Offline</li>
 </ul>
 <h2 id="installation"><a href="#installation">Installation</a></h2>
-<p>This is a <a href="https://nodejs.org/">Node.js</a> module available through the
-<a href="https://www.npmjs.com/">npm registry</a>. It can be installed using the
-<a href="https://docs.npmjs.com/getting-started/installing-npm-packages-locally"><code>npm</code></a> command line tools.</p>
-<pre><code class="hljs language-sh">npm install telegraf-test --save</code></pre>
-<h2 id="how-to-use"><a href="#how-to-use">How to Use</a></h2>
-<h3 id="example"><a href="#example">Example</a></h3>
-<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> Telegraf = <span class="hljs-built_in">require</span>(<span class="hljs-string">'telegraf'</span>)
+<p>Module available through the <a href="https://www.npmjs.com/">npm registry</a>. It can be installed using the  <a href="https://docs.npmjs.com/getting-started/installing-npm-packages-locally"><code>npm</code></a> or <a href="https://yarnpkg.com/en/"><code>yarn</code></a> command line tools.</p>
+<pre><code class="hljs language-sh"><span class="hljs-comment"># NPM</span>
+npm install telegraf-test --save
+<span class="hljs-comment"># Or Using Yarn</span>
+yarn add telegraf-test</code></pre>
+<h2 id="example"><a href="#example">Example</a></h2>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> Telegraf = <span class="hljs-built_in">require</span>(<span class="hljs-string">'telegraf'</span>)
 <span class="hljs-keyword">const</span> TelegrafTest = <span class="hljs-built_in">require</span>(<span class="hljs-string">'telegraf-test'</span>)
 
 <span class="hljs-keyword">const</span> port = <span class="hljs-number">3000</span>
@@ -111,31 +113,32 @@ baseURL: https://tiagodanin.github.io
 
 test.setUser({
 	<span class="hljs-attr">id</span>: <span class="hljs-number">1234</span>,
-	<span class="hljs-attr">username</span>: <span class="hljs-string">'@Jack'</span>
-	<span class="hljs-comment">//...//</span>
-}) <span class="hljs-comment">/*return {
+	<span class="hljs-attr">username</span>: <span class="hljs-string">'@TiagoEDGE'</span>
+	<span class="hljs-comment">// ...//</span>
+}) <span class="hljs-comment">/* Return {
 	id: 1234,
 	is_bot: false,
 	first_name: 'FIST-NAME',
 	last_name: '',
-	username: '@Jack',
+	username: '@TiagoEDGE',
 	language_code: 'en-US'
-}*/</span>
+} */</span>
 
-bot.hears(<span class="hljs-regexp">/ping/i</span>, (ctx) => {
+bot.hears(<span class="hljs-regexp">/ping/i</span>, ctx => {
 	ctx.reply(<span class="hljs-string">'Pong!'</span>)
 })
 
 bot.startWebhook(<span class="hljs-string">`/<span class="hljs-subst">${secretPath}</span>`</span>, <span class="hljs-literal">null</span>, port)
 
 test.sendMessageWithText(<span class="hljs-string">'/ping'</span>)
-	.then(<span class="hljs-function">(<span class="hljs-params">res</span>) =></span> {
+	.then(<span class="hljs-function"><span class="hljs-params">res</span> =></span> {
 		<span class="hljs-built_in">console</span>.log(res.data)
-		<span class="hljs-comment">//return { method: 'sendMessage', chat_id: 1234567890, text: 'Pong!' }</span>
+		<span class="hljs-comment">// { method: 'sendMessage', chat_id: 1234567890, text: 'Pong!' }</span>
 	})
-	.catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =></span> {
-		<span class="hljs-built_in">console</span>.error(err)
+	.catch(<span class="hljs-function"><span class="hljs-params">error</span> =></span> {
+		<span class="hljs-built_in">console</span>.error(error)
 	})</code></pre>
+<h2 id="documentation"><a href="#documentation">Documentation</a></h2>
 <h3 id="options-of-class-telegraftestoptions"><a href="#options-of-class-telegraftestoptions">Options of Class <code>TelegrafTest({options})</code></a></h3>
 <ul>
 <li>
@@ -286,6 +289,12 @@ describe(<span class="hljs-string">'bot'</span>, <span class="hljs-function"><sp
 <p>Run with <code>$ mocha --exit --timeout 100000</code></p>
 <h3 id="using-debug"><a href="#using-debug">Using Debug</a></h3>
 <p>Set environment variables <code>DEBUG=telgraf:test</code>.</p>
+<h2 id="tests"><a href="#tests">Tests</a></h2>
+<p>To run the test suite, first install the dependencies, then run <code>test</code>:</p>
+<pre><code class="hljs language-sh"><span class="hljs-comment"># NPM</span>
+npm <span class="hljs-built_in">test</span>
+<span class="hljs-comment"># Or Using Yarn</span>
+yarn <span class="hljs-built_in">test</span></code></pre>
 <h2 id="dependencies"><a href="#dependencies">Dependencies</a></h2>
 <ul>
 <li><a href="https://ghub.io/axios">axios</a>: Promise based HTTP client for the browser and node.js</li>
@@ -294,11 +303,14 @@ describe(<span class="hljs-string">'bot'</span>, <span class="hljs-function"><sp
 </ul>
 <h2 id="dev-dependencies"><a href="#dev-dependencies">Dev Dependencies</a></h2>
 <ul>
-<li><a href="https://ghub.io/telegraf">telegraf</a>: 📡 Modern Telegram bot framework</li>
 <li><a href="https://ghub.io/mocha">mocha</a>: simple, flexible, fun test framework</li>
+<li><a href="https://ghub.io/telegraf">telegraf</a>: 📡 Modern Telegram Bot Framework</li>
+<li><a href="https://ghub.io/xo">xo</a>: JavaScript happiness style linter ❤️</li>
 </ul>
+<h2 id="contributors"><a href="#contributors">Contributors</a></h2>
+<p>Pull requests and stars are always welcome. For bugs and feature requests, please <a href="https://github.com/TiagoDanin/Telegraf-Test/issues">create an issue</a>. <a href="https://github.com/TiagoDanin/Telegraf-Test/graphs/contributors">List of all contributors</a>.</p>
 <h2 id="license"><a href="#license">License</a></h2>
-<p>MIT</p>
+<p><a href="LICENSE">MIT</a> © <a href="https://TiagoDanin.github.io">Tiago Danin</a></p>
 
 
 	<hr class="uk-margin-top-remove uk-divider-icon">
