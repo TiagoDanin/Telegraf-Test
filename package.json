@@ -1,35 +1,39 @@
 {
-  "name": "telegraf-test",
-  "version": "1.3.0",
-  "description": "Telegraf Test - Simple Test ToolKit of Telegram Bots",
-  "main": "index.js",
-  "dependencies": {
-    "axios": "0.18.0",
-    "debug": "4.0.1",
-    "express": "4.16.3"
-  },
-  "devDependencies": {
-    "telegraf": "3.24.0",
-    "mocha": "5.2.0"
-  },
-  "scripts": {
-    "test": "mocha --exit --timeout 100000"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/TiagoDanin/Telegraf-Test.git"
-  },
-  "keywords": [
-    "telegraf",
-    "test",
-    "telegram",
-    "framework",
-    "toolkit"
-  ],
-  "author": "Tiago Danin",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/TiagoDanin/Telegraf-Test/issues"
-  },
-  "homepage": "https://github.com/TiagoDanin/Telegraf-Test#readme"
+	"name": "telegraf-test",
+	"version": "1.1.0",
+	"description": "Telegraf Test - Simple Test ToolKit of Telegram Bots",
+	"main": "index.js",
+	"dependencies": {
+		"axios": "^0.18.1",
+		"debug": "^4.1.1",
+		"express": "^4.17.1",
+		"snyk": "^1.161.1"
+	},
+	"devDependencies": {
+		"telegraf": "^3.30.1",
+		"mocha": "6.1.4"
+	},
+	"scripts": {
+		"test": "mocha --exit --timeout 100000",
+		"snyk-protect": "snyk protect",
+		"prepublish": "npm run snyk-protect"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/TiagoDanin/Telegraf-Test.git"
+	},
+	"keywords": [
+		"telegraf",
+		"test",
+		"telegram",
+		"framework",
+		"toolkit"
+	],
+	"author": "Tiago Danin",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/TiagoDanin/Telegraf-Test/issues"
+	},
+	"homepage": "https://github.com/TiagoDanin/Telegraf-Test#readme",
+	"snyk": true
 }
