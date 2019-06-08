@@ -1,6 +1,7 @@
+/* eslint-disable no-undef */
+const assert = require('assert')
 const Telegraf = require('telegraf')
 const TelegrafTest = require('.')
-const assert = require('assert')
 
 const port = 3000
 const secretPath = 'secret-path'
@@ -11,11 +12,11 @@ const test = new TelegrafTest({
 })
 test.startServer()
 
-bot.hears(/ping/i, (ctx) => {
+bot.hears(/ping/i, ctx => {
 	ctx.reply('Pong!')
 })
 
-bot.on('inline_query', (ctx) => {
+bot.on('inline_query', ctx => {
 	ctx.answerInlineQuery([{
 		type: 'article',
 		title: 'TITLE',
@@ -28,7 +29,7 @@ bot.on('inline_query', (ctx) => {
 	})
 })
 
-bot.on('callback_query', (ctx) => {
+bot.on('callback_query', ctx => {
 	ctx.answerCbQuery(
 		'Test‼️',
 		true
@@ -37,67 +38,67 @@ bot.on('callback_query', (ctx) => {
 
 bot.startWebhook(`/${secretPath}`, null, port)
 
-describe('Telegraf Test', function() {
-	it('setBot()', async function() {
-		var bot = test.setBot({
+describe('Telegraf Test', () => {
+	it('setBot()', async () => {
+		const bot = test.setBot({
 			username: 'Tiagobot'
 		})
-		assert.equal(bot.username, 'Tiagobot')
+		assert.strictEqual(bot.username, 'Tiagobot')
 	})
 
-	it('setUser()', async function() {
-		var user = test.setUser({
+	it('setUser()', async () => {
+		const user = test.setUser({
 			id: 1234,
 			username: '@Jack'
 		})
-		assert.equal(user.id, 1234)
-		assert.equal(user.username, '@Jack')
+		assert.strictEqual(user.id, 1234)
+		assert.strictEqual(user.username, '@Jack')
 	})
 
-	it('setChat()', async function() {
-		var chat = test.setChat({
+	it('setChat()', async () => {
+		const chat = test.setChat({
 			id: 6655465,
 			type: 'supergroup'
 		})
-		assert.equal(chat.id, 6655465)
-		assert.equal(chat.type, 'supergroup')
+		assert.strictEqual(chat.id, 6655465)
+		assert.strictEqual(chat.type, 'supergroup')
 	})
 
-	it('setMessage()', async function() {
-		var message = test.setMessage({})
-		assert.equal(message.message_id, 2)
-		assert.equal(message.from.username, '@Jack')
+	it('setMessage()', async () => {
+		const message = test.setMessage({})
+		assert.strictEqual(message.message_id, 2)
+		assert.strictEqual(message.from.username, '@Jack')
 	})
 
-	it('setMessage()', async function() {
-		var message = test.setMessage({})
-		assert.equal(message.from.username, '@Jack')
+	it('setMessage()', async () => {
+		const message = test.setMessage({})
+		assert.strictEqual(message.from.username, '@Jack')
 	})
 
-	it('setInlineQuery()', async function() {
-		var inline = test.setInlineQuery({})
-		assert.equal(inline.from.username, '@Jack')
+	it('setInlineQuery()', async () => {
+		const inline = test.setInlineQuery({})
+		assert.strictEqual(inline.from.username, '@Jack')
 	})
 
-	it('setCallbackQuery()', async function() {
-		var callback = test.setCallbackQuery({})
-		assert.equal(callback.from.username, '@Jack')
+	it('setCallbackQuery()', async () => {
+		const callback = test.setCallbackQuery({})
+		assert.strictEqual(callback.from.username, '@Jack')
 	})
 
-	it('setUpdateId()', async function() {
-		var id = test.setUpdateId(6)
-		assert.equal(id, 6)
+	it('setUpdateId()', async () => {
+		const id = test.setUpdateId(6)
+		assert.strictEqual(id, 6)
 	})
 
-	it('setWebhook()', async function() {
-		var webhook = test.setWebhook()
-		assert.equal(webhook.url, test.webhook.url)
-		assert.equal(webhook.allowed_updates.toString(), test.getAllowedUpdates().toString())
+	it('setWebhook()', async () => {
+		const webhook = test.setWebhook()
+		assert.strictEqual(webhook.url, test.webhook.url)
+		assert.strictEqual(webhook.allowed_updates.toString(), test.getAllowedUpdates().toString())
 	})
 
-	it('setAllowedUpdates()', async function() {
-		var updatesType = test.setAllowedUpdates()
-		assert.equal(updatesType.toString(), [
+	it('setAllowedUpdates()', async () => {
+		const updatesType = test.setAllowedUpdates()
+		assert.strictEqual(updatesType.toString(), [
 			'message',
 			'channel_post',
 			'edited_channel_post',
@@ -109,76 +110,76 @@ describe('Telegraf Test', function() {
 		].toString())
 	})
 
-	it('getBot', async function() {
-		assert.equal(test.getBot(), test.bot)
+	it('getBot', async () => {
+		assert.strictEqual(test.getBot(), test.bot)
 	})
 
-	it('getUser', async function() {
-		assert.equal(test.getUser(), test.user)
+	it('getUser', async () => {
+		assert.strictEqual(test.getUser(), test.user)
 	})
 
-	it('getChat', async function() {
-		assert.equal(test.getChat(), test.chat)
+	it('getChat', async () => {
+		assert.strictEqual(test.getChat(), test.chat)
 	})
 
-	it('getMessage', async function() {
-		assert.equal(test.getMessage(), test.message)
+	it('getMessage', async () => {
+		assert.strictEqual(test.getMessage(), test.message)
 	})
 
-	it('getInlineQuery', async function() {
-		assert.equal(test.getInlineQuery(), test.inline_query)
+	it('getInlineQuery', async () => {
+		assert.strictEqual(test.getInlineQuery(), test.inline_query)
 	})
 
-	it('getCallbackQuery', async function() {
-		assert.equal(test.getCallbackQuery(), test.callback_query)
+	it('getCallbackQuery', async () => {
+		assert.strictEqual(test.getCallbackQuery(), test.callback_query)
 	})
 
-	it('getUpdateId', async function() {
-		assert.equal(test.getUpdateId(), test.updateId)
+	it('getUpdateId', async () => {
+		assert.strictEqual(test.getUpdateId(), test.updateId)
 	})
 
-	it('getWebhook', async function() {
-		assert.equal(test.getWebhook(), test.webhook)
+	it('getWebhook', async () => {
+		assert.strictEqual(test.getWebhook(), test.webhook)
 	})
 
-	it('getAllowedUpdates', async function() {
-		assert.equal(test.getAllowedUpdates(), test.allowedUpdates)
+	it('getAllowedUpdates', async () => {
+		assert.strictEqual(test.getAllowedUpdates(), test.allowedUpdates)
 	})
 
-	it('sendUpdate()', async function() {
-		var r = await test.sendUpdate({})
-		assert.equal(r, false)
+	it('sendUpdate()', async () => {
+		const r = await test.sendUpdate({})
+		assert.strictEqual(r, false)
 	})
 
-	it('sendMessage()', async function() {
-		var r = await test.sendMessage({
+	it('sendMessage()', async () => {
+		const r = await test.sendMessage({
 			text: '/ping'
 		})
-		assert.equal(r.data.text, 'Pong!')
+		assert.strictEqual(r.data.text, 'Pong!')
 	})
 
-	it('sendMessageWithText()', async function() {
-		var r = await test.sendMessageWithText('/ping')
-		assert.equal(r.data.text, 'Pong!')
+	it('sendMessageWithText()', async () => {
+		const r = await test.sendMessageWithText('/ping')
+		assert.strictEqual(r.data.text, 'Pong!')
 	})
 
-	it('sendInlineQuery()', async function() {
-		var r = await test.sendInlineQuery('hi!')
-		assert.equal(r.data.method, 'answerInlineQuery')
-		assert.equal(r.data.cache_time, 0)
+	it('sendInlineQuery()', async () => {
+		const r = await test.sendInlineQuery('hi!')
+		assert.strictEqual(r.data.method, 'answerInlineQuery')
+		assert.strictEqual(r.data.cache_time, 0)
 	})
 
-	it('sendCallbackQuery()', async function() {
-		var r = await test.sendCallbackQueryWithData({
+	it('sendCallbackQuery()', async () => {
+		const r = await test.sendCallbackQueryWithData({
 			data: 'test'
 		})
-		assert.equal(r.data.method, 'answerCallbackQuery')
-		assert.equal(r.data.text, 'Test‼️')
+		assert.strictEqual(r.data.method, 'answerCallbackQuery')
+		assert.strictEqual(r.data.text, 'Test‼️')
 	})
 
-	it('sendCallbackQueryWithData()', async function() {
-		var r = await test.sendCallbackQueryWithData('test')
-		assert.equal(r.data.method, 'answerCallbackQuery')
-		assert.equal(r.data.text, 'Test‼️')
+	it('sendCallbackQueryWithData()', async () => {
+		const r = await test.sendCallbackQueryWithData('test')
+		assert.strictEqual(r.data.method, 'answerCallbackQuery')
+		assert.strictEqual(r.data.text, 'Test‼️')
 	})
 })

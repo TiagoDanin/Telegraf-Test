@@ -5,7 +5,7 @@ const express = require('express')
 const log = debug('telegraf:test')
 
 class TelegrafTest {
-	constructor (options) {
+	constructor(options) {
 		this.options = {
 			url: 'http://127.0.0.1:3000/secret-path',
 			axios: {},
@@ -27,8 +27,8 @@ class TelegrafTest {
 		this.server = express()
 	}
 
-	//Methods start in set**
-	setBot (bot) {
+	// Methods start in set**
+	setBot(bot) {
 		this.bot = {
 			id: 1234,
 			is_bot: true,
@@ -41,7 +41,7 @@ class TelegrafTest {
 		return this.bot
 	}
 
-	setUser (user) {
+	setUser(user) {
 		this.user = {
 			id: 1234567890,
 			is_bot: false,
@@ -56,7 +56,7 @@ class TelegrafTest {
 		return this.user
 	}
 
-	setChat (chat) {
+	setChat(chat) {
 		this.chat = {
 			id: 1234567890,
 			type: 'private', // “private”, “group”, “supergroup” or “channel”
@@ -72,29 +72,31 @@ class TelegrafTest {
 		return this.chat
 	}
 
-	setMessage (message) {
-		var message_id = 1
+	setMessage(message) {
+		let message_id = 1
 		if (this.message && this.message.message_id) {
 			message_id = Math.floor(this.message.message_id) + 1
 		}
-		//TODO: Add entities
+
+		// TODO: Add entities
 		this.message = {
-			message_id: message_id,
+			message_id,
 			from: this.user,
 			chat: this.chat,
-			date: `${+ new Date()}`,
+			date: `${Number(new Date())}`,
 			...message
 		}
 		return this.message
 	}
 
-	setInlineQuery (inlineQuery) {
-		var id = 1
+	setInlineQuery(inlineQuery) {
+		let id = 1
 		if (this.inline_query && this.inline_query.id) {
 			id = Math.floor(id) + 1
 		}
+
 		this.inline_query = {
-			id: id,
+			id,
 			from: this.user,
 			query: '',
 			offset: '',
@@ -103,31 +105,32 @@ class TelegrafTest {
 		return this.inline_query
 	}
 
-	setCallbackQuery (callbackQuery) {
-		var id = 1
+	setCallbackQuery(callbackQuery) {
+		let id = 1
 		if (this.callback_query && this.callback_query.id) {
 			id = Math.floor(id) + 1
 		}
+
 		this.callback_query = {
-			id: id,
+			id,
 			from: this.user,
 			...callbackQuery
 		}
 		return this.callback_query
 	}
 
-	setUpdateId (id) {
+	setUpdateId(id) {
 		this.updateId = Math.floor(id)
 		log('New update id', this.updateId)
 		return this.updateId
 	}
 
-	setWebhook (webhook) {
+	setWebhook(webhook) {
 		this.webhook = {
 			url: '',
 			has_custom_certificate: false,
 			pending_update_count: 0,
-			last_error_date: `${+ new Date()}`,
+			last_error_date: `${Number(new Date())}`,
 			last_error_message: 'Init Telegraf Test',
 			max_connections: 40,
 			allowed_updates: [
@@ -140,7 +143,7 @@ class TelegrafTest {
 		return this.webhook
 	}
 
-	setAllowedUpdates (updates) {
+	setAllowedUpdates(updates) {
 		this.allowedUpdates = [
 			'message',
 			'channel_post',
@@ -154,56 +157,58 @@ class TelegrafTest {
 		if (updates) {
 			this.allowedUpdates = updates
 		}
+
 		log('New allowedUpdates', this.allowedUpdates)
 		return this.allowedUpdates
 	}
 
-	//Methods start in get**
-	getBot () {
+	// Methods start in get**
+	getBot() {
 		return this.bot
 	}
 
-	getUser () {
+	getUser() {
 		return this.user
 	}
 
-	getChat () {
+	getChat() {
 		return this.chat
 	}
 
-	getMessage () {
+	getMessage() {
 		return this.message
 	}
 
-	getInlineQuery () {
+	getInlineQuery() {
 		return this.inline_query
 	}
 
-	getCallbackQuery () {
+	getCallbackQuery() {
 		return this.callback_query
 	}
 
-	getUpdateId () {
+	getUpdateId() {
 		return this.updateId
 	}
 
-	getWebhook () {
+	getWebhook() {
 		return this.webhook
 	}
 
-	getAllowedUpdates () {
+	getAllowedUpdates() {
 		return this.allowedUpdates
 	}
 
-	//Methods start in send**
-	sendUpdate (update) {
+	// Methods start in send**
+	sendUpdate(update) {
 		this.updateId++
-		var ignored = true
-		for (let updateType of this.allowedUpdates) {
+		let ignored = true
+		for (const updateType of this.allowedUpdates) {
 			if (update[updateType]) {
 				ignored = false
 			}
 		}
+
 		if (ignored) {
 			log('Update ignored (check getAllowedUpdates()) ', {
 				update_id: this.updateId,
@@ -211,6 +216,7 @@ class TelegrafTest {
 			})
 			return false
 		}
+
 		log('Send via WebHook ', {
 			update_id: this.updateId,
 			...update
@@ -229,48 +235,48 @@ class TelegrafTest {
 		})
 	}
 
-	sendMessage (options) {
-		var message = this.setMessage({
+	sendMessage(options) {
+		const message = this.setMessage({
 			...options
 		})
-		return this.sendUpdate({message: message})
+		return this.sendUpdate({message})
 	}
 
-	sendMessageWithText (text, options) {
-		var message = this.setMessage({
-			text: text,
+	sendMessageWithText(text, options) {
+		const message = this.setMessage({
+			text,
 			...options
 		})
-		return this.sendUpdate({message: message})
+		return this.sendUpdate({message})
 	}
 
-	sendInlineQuery (query, options) {
-		var inlineQuery = this.setInlineQuery({
-			query: query,
+	sendInlineQuery(query, options) {
+		const inlineQuery = this.setInlineQuery({
+			query,
 			...options
 		})
 		return this.sendUpdate({inline_query: inlineQuery})
 	}
 
-	sendCallbackQuery (options) {
-		var callbackQuery = this.setCallbackQuery({
+	sendCallbackQuery(options) {
+		const callbackQuery = this.setCallbackQuery({
 			...options
 		})
 		return this.sendUpdate({callback_query: callbackQuery})
 	}
 
-	sendCallbackQueryWithData (data, options) {
-		var callbackQuery = this.setCallbackQuery({
-			data: data,
+	sendCallbackQueryWithData(data, options) {
+		const callbackQuery = this.setCallbackQuery({
+			data,
 			message: this.message,
 			...options
 		})
 		return this.sendUpdate({callback_query: callbackQuery})
 	}
 
-	startServer () {
+	startServer() {
 		this.server.get('/', (req, res) => {
-			var index = `
+			const index = `
 Hello World!</br>
 Web server of Telegraf Test by Tiago Danin</br>
 https://github.com/TiagoDanin/Telegraf-Test
@@ -278,8 +284,8 @@ https://github.com/TiagoDanin/Telegraf-Test
 			res.send(index)
 		})
 
-		var methods = {
-			getMe: (query) => {
+		const methods = {
+			getMe: () => {
 				return {
 					ok: true,
 					result: {
@@ -287,8 +293,8 @@ https://github.com/TiagoDanin/Telegraf-Test
 					}
 				}
 			},
-			setWebhook: (query) => {
-				var output = {
+			setWebhook: query => {
+				const output = {
 					ok: true,
 					result: true,
 					description: 'Webhook is already deleted'
@@ -296,17 +302,16 @@ https://github.com/TiagoDanin/Telegraf-Test
 				if (query.length >= 1) {
 					this.setWebhook(query)
 					output.description = 'Webhook was set'
-				} else {
-					if (this.webhook.url != '') {
-						output.description = 'Webhook was deleted'
-						this.setWebhook({
-							url: ''
-						})
-					}
+				} else if (this.webhook.url !== '') {
+					output.description = 'Webhook was deleted'
+					this.setWebhook({
+						url: ''
+					})
 				}
+
 				return output
 			},
-			deleteWebhook: (query) => {
+			deleteWebhook: () => {
 				this.setWebhook({
 					url: ''
 				})
@@ -316,7 +321,7 @@ https://github.com/TiagoDanin/Telegraf-Test
 					description: 'Webhook was deleted'
 				}
 			},
-			getWebhookInfo: (query) => {
+			getWebhookInfo: () => {
 				return {
 					ok: true,
 					result: {
@@ -325,7 +330,7 @@ https://github.com/TiagoDanin/Telegraf-Test
 				}
 			}
 			/*
-			getUpdates: (query) => {
+			GetUpdates: (query) => {
 				return JSON.stringify()
 			},
 			sendMessage: (query) => {
@@ -491,29 +496,29 @@ https://github.com/TiagoDanin/Telegraf-Test
 		}
 
 		this.server.get('/bot:token/:method', (req, res) => {
-			if (req.params.token != this.options.token) {
+			if (req.params.token !== this.options.token) {
 				return res.json({
 					ok: false,
 					error_code: 401,
 					description: 'Unauthorized'
 				})
 			}
+
 			if (methods[req.params.method]) {
 				return res.json(methods[req.params.method](req.query))
-			} else {
-				return res.json({
-					ok: false,
-					error_code: 401,
-					description: 'Not Found: method not found in Telegraf Test'
-				})
 			}
+
+			return res.json({
+				ok: false,
+				error_code: 401,
+				description: 'Not Found: method not found in Telegraf Test'
+			})
 		})
 
 		this.server.listen(this.options.port, () => {
 			log('Telegraf Test Server runnig in port: ', this.options.port)
 		})
 	}
-
 }
 
 module.exports = TelegrafTest

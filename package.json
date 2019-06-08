@@ -1,39 +1,83 @@
 {
 	"name": "telegraf-test",
+	"main": "index.js",
+	"preferGlobal": false,
 	"version": "1.1.0",
 	"description": "Telegraf Test - Simple Test ToolKit of Telegram Bots",
-	"main": "index.js",
-	"dependencies": {
-		"axios": "^0.18.1",
-		"debug": "^4.1.1",
-		"express": "^4.17.1",
-		"snyk": "^1.161.1"
+	"author": {
+		"email": "TiagoDanin@outlook.com",
+		"name": "Tiago Danin",
+		"url": "https://TiagoDanin.github.io"
 	},
-	"devDependencies": {
-		"telegraf": "^3.30.1",
-		"mocha": "6.1.4"
-	},
+	"license": "MIT",
+	"keywords": [
+		"localhost",
+		"mocha",
+		"offline",
+		"sendmessage",
+		"telegraf",
+		"telegram",
+		"telegram-bot",
+		"telegram-test",
+		"test",
+		"test-automation",
+		"test-framework",
+		"testing",
+		"testing-tools",
+		"tests"
+	],
 	"scripts": {
-		"test": "mocha --exit --timeout 100000",
-		"snyk-protect": "snyk protect",
-		"prepublish": "npm run snyk-protect"
+		"start": "node index.js",
+		"test": "xo && mocha --exit --timeout 100000"
 	},
+	"engines": {
+		"node": ">=8"
+	},
+	"private": false,
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/TiagoDanin/Telegraf-Test.git"
 	},
-	"keywords": [
-		"telegraf",
-		"test",
-		"telegram",
-		"framework",
-		"toolkit"
-	],
-	"author": "Tiago Danin",
-	"license": "MIT",
+	"homepage": "https://TiagoDanin.github.io/Telegraf-Test",
 	"bugs": {
 		"url": "https://github.com/TiagoDanin/Telegraf-Test/issues"
 	},
-	"homepage": "https://github.com/TiagoDanin/Telegraf-Test#readme",
-	"snyk": true
+	"github": {
+		"name": "Telegraf-Test",
+		"owner": "TiagoDanin"
+	},
+	"files": [
+		"LICENSE",
+		"README.md",
+		"index.js",
+		"package.json"
+	],
+	"dependencies": {
+		"axios": "^0.18.1",
+		"debug": "^4.1.1",
+		"express": "^4.17.1"
+	},
+	"devDependencies": {
+		"mocha": "6.1.4",
+		"telegraf": "^3.30.1",
+		"xo": "0.24.0"
+	},
+	"xo": {
+		"rules": {
+			"quote-props": "warn",
+			"eqeqeq": "warn",
+			"array-callback-return": "warn",
+			"require-atomic-updates": "warn",
+			"camelcase": "off"
+		},
+		"semicolon": false
+	},
+	"features": [
+		"Telegram bot api server emulator.",
+		"Compatible with Telegraf <3.",
+		"Compatible with Mocha e others test framework.",
+		"Send message, inline query and callback query.",
+		"Work in local network.",
+		"Offline"
+	]
 }
