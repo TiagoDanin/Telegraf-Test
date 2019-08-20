@@ -495,7 +495,7 @@ https://github.com/TiagoDanin/Telegraf-Test
 			*/
 		}
 
-		this.server.get('/bot:token/:method', (req, res) => {
+		this.server.post('/bot:token/:method', (req, res) => {
 			if (req.params.token !== this.options.token) {
 				return res.json({
 					ok: false,
