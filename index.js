@@ -495,7 +495,7 @@ https://github.com/TiagoDanin/Telegraf-Test
 			*/
 		}
 
-		this.server.post('/bot:token/:method', (req, res) => {
+		const handleRequest = (req, res) => {
 			if (req.params.token !== this.options.token) {
 				return res.json({
 					ok: false,
@@ -513,7 +513,10 @@ https://github.com/TiagoDanin/Telegraf-Test
 				error_code: 401,
 				description: 'Not Found: method not found in Telegraf Test'
 			})
-		})
+		}
+
+		this.server.get('/bot:token/:method', handleRequest)
+		this.server.post('/bot:token/:method', handleRequest)
 
 		this.server.listen(this.options.port, () => {
 			log('Telegraf Test Server runnig in port: ', this.options.port)
