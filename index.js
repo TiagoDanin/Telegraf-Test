@@ -275,12 +275,17 @@ class TelegrafTest {
 	}
 
 	startServer() {
-		this.server.get('/', (req, res) => {
-			const index = `
+		const index = `
 Hello World!</br>
 Web server of Telegraf Test by Tiago Danin</br>
 https://github.com/TiagoDanin/Telegraf-Test
-			`
+		`
+
+		this.server.get('/', (req, res) => {
+			res.send(index)
+		})
+
+		this.server.post('/', (req, res) => {
 			res.send(index)
 		})
 

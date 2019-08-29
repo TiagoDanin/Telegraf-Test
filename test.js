@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 const assert = require('assert')
 const Telegraf = require('telegraf')
+const axios = require('axios')
 const TelegrafTest = require('.')
 
 const port = 3000
@@ -181,5 +182,9 @@ describe('Telegraf Test', () => {
 		const r = await test.sendCallbackQueryWithData('test')
 		assert.strictEqual(r.data.method, 'answerCallbackQuery')
 		assert.strictEqual(r.data.text, 'Test‼️')
+	})
+
+	it('send request / via POST', async () => {
+		await axios.post('http://127.0.0.1:2000/')
 	})
 })
