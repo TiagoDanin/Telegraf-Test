@@ -62,10 +62,15 @@
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
   integrity sha512-tHq6qdbT9U1IRSGf14CL0pUlULksvY9OZ+5eEgl1N7t+OA3tGvNpxJCzuKQlsNgCVwbAs670L1vcVQi8j9HjnA==
 
-"@types/node@*", "@types/node@^12.0.4":
+"@types/node@*":
   version "12.7.2"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.7.2.tgz#c4e63af5e8823ce9cc3f0b34f7b998c2171f0c44"
   integrity sha512-dyYO+f6ihZEtNPDcWNR1fkoTDf3zAK3lAABDze3mz6POyIercH0lEUawUFXlG8xaQZmm1yEBON/4TsYv/laDYg==
+
+"@types/node@^13.1.0":
+  version "13.5.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.5.0.tgz#4e498dbf355795a611a87ae5ef811a8660d42662"
+  integrity sha512-Onhn+z72D2O2Pb2ql2xukJ55rglumsVo1H6Fmyi8mlU9SvKdBk/pUSUAiBY/d9bAOF7VVWajX3sths/+g6ZiAQ==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -3501,12 +3506,12 @@ table@^5.2.3:
     slice-ansi "^2.1.0"
     string-width "^3.0.0"
 
-telegraf@^3.34.1:
-  version "3.34.1"
-  resolved "https://registry.yarnpkg.com/telegraf/-/telegraf-3.34.1.tgz#69006497f8ea4badd724164ae913cef643726719"
-  integrity sha512-XKempUafzdi3TrPIA/jo2e7sRoLjE7oexgYTzQ7BeWHPnEi+Wh5EvOroOElSD9V4SCt9bub3HM352VK7dJS8Zw==
+telegraf@^3.36.0:
+  version "3.36.0"
+  resolved "https://registry.yarnpkg.com/telegraf/-/telegraf-3.36.0.tgz#eab1160159df6033d3cb92ac990902523277822a"
+  integrity sha512-9o6AJKRiTm5vMWYI6WpTfBHzu4FMpWBNKxvnMxRds/cbMY9RnsVVjdi8i4bFFlfd+xbi73EbrnI3dybayryICA==
   dependencies:
-    "@types/node" "^12.0.4"
+    "@types/node" "^13.1.0"
     debug "^4.0.1"
     minimist "^1.2.0"
     module-alias "^2.2.2"
