@@ -523,7 +523,7 @@ https://github.com/TiagoDanin/Telegraf-Test
 		this.server.get('/bot:token/:method', handleRequest)
 		this.server.post('/bot:token/:method', handleRequest)
 
-		this.server.listen(this.options.port, () => {
+		return this.server.listen(this.options.port, () => {
 			log('Telegraf Test Server runnig in port: ', this.options.port)
 		})
 	}
