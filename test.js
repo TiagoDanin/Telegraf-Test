@@ -11,7 +11,8 @@ const bot = new Telegraf('ABCD:1234567890')
 const test = new TelegrafTest({
 	url: `http://127.0.0.1:${port}/${secretPath}`
 })
-test.startServer()
+
+const express = test.startServer()
 
 bot.hears(/ping/i, ctx => {
 	ctx.reply('Pong!')
@@ -186,5 +187,9 @@ describe('Telegraf Test', () => {
 
 	it('send request / via POST', async () => {
 		await axios.post('http://127.0.0.1:2000/')
+	})
+
+	it('Has express object of Start Server', async () => {
+		assert.strictEqual(typeof express === 'object', true)
 	})
 })
