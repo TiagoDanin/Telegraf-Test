@@ -55,6 +55,10 @@ Return request of [axios](https://github.com/axios/axios) or `false` in updates 
 
 Telegram Bot Api Server Emulator. Start with `startServer()`.
 
+- **startServer()** - Return Express App Object
+
+Support methods:
+
 - [x] [getMe](https://core.telegram.org/bots/api#getme)
 - [x] [setWebhook](https://core.telegram.org/bots/api#setwebhook)
 - [x] [getWebhookInfo](https://core.telegram.org/bots/api#deletewebhook)

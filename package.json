@@ -64,10 +64,6 @@
 	},
 	"xo": {
 		"rules": {
-			"quote-props": "warn",
-			"eqeqeq": "warn",
-			"array-callback-return": "warn",
-			"require-atomic-updates": "warn",
 			"camelcase": "off"
 		},
 		"semicolon": false

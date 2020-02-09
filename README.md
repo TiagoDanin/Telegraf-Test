@@ -15,13 +15,13 @@ Telegraf Test - Simple Test ToolKit of Telegram Bots
 
 ## Installation
 
-Module available through the [npm registry](https://www.npmjs.com/). It can be installed using the  [`npm`](https://docs.npmjs.com/getting-started/installing-npm-packages-locally) or [`yarn`](https://yarnpkg.com/en/) command line tools.
+Module available through the [npm registry](https://www.npmjs.com/). It can be installed using the [`npm`](https://docs.npmjs.com/getting-started/installing-npm-packages-locally) or [`yarn`](https://yarnpkg.com/en/) command line tool.
 
 ```sh
-# NPM
-npm install telegraf-test --save
-# Or Using Yarn
+# Yarn (Recomend)
 yarn add telegraf-test
+# NPM 
+npm install telegraf-test --save
 ```
 
 ## Example
@@ -126,6 +126,10 @@ Return request of [axios](https://github.com/axios/axios) or `false` in updates 
 
 Telegram Bot Api Server Emulator. Start with `startServer()`.
 
+- **startServer()** - Return Express App Object
+
+Support methods:
+
 - [x] [getMe](https://core.telegram.org/bots/api#getme)
 - [x] [setWebhook](https://core.telegram.org/bots/api#setwebhook)
 - [x] [getWebhookInfo](https://core.telegram.org/bots/api#deletewebhook)
@@ -217,23 +221,53 @@ Set environment variables `DEBUG=telgraf:test`.
 To run the test suite, first install the dependencies, then run `test`:
 
 ```sh
-# NPM
-npm test
-# Or Using Yarn
+# Using Yarn
 yarn test
+# Using NPM
+npm run test
 ```
 
 ## Dependencies
 
-- [axios](https://ghub.io/axios): Promise based HTTP client for the browser and node.js
-- [debug](https://ghub.io/debug): small debugging utility
-- [express](https://ghub.io/express): Fast, unopinionated, minimalist web framework
+<details>
+	<summary><a href="https://ghub.io/axios">axios</a>: Promise based HTTP client for the browser and node.js</summary>
+	<b>Author</b>: Matt Zabriskie</br>
+	<b>License</b>: MIT</br>
+	<b>Version</b>: ^0.19.2
+</details>
+<details>
+	<summary><a href="https://ghub.io/debug">debug</a>: small debugging utility</summary>
+	<b>Author</b>: TJ Holowaychuk</br>
+	<b>License</b>: MIT</br>
+	<b>Version</b>: ^4.1.1
+</details>
+<details>
+	<summary><a href="https://ghub.io/express">express</a>: Fast, unopinionated, minimalist web framework</summary>
+	<b>Author</b>: TJ Holowaychuk</br>
+	<b>License</b>: MIT</br>
+	<b>Version</b>: ^4.17.1
+</details>
 
 ## Dev Dependencies
 
-- [mocha](https://ghub.io/mocha): simple, flexible, fun test framework
-- [telegraf](https://ghub.io/telegraf): 📡 Modern Telegram Bot Framework
-- [xo](https://ghub.io/xo): JavaScript happiness style linter ❤️
+<details>
+	<summary><a href="https://ghub.io/mocha">mocha</a>: simple, flexible, fun test framework</summary>
+	<b>Author</b>: TJ Holowaychuk</br>
+	<b>License</b>: MIT</br>
+	<b>Version</b>: 7.0.1
+</details>
+<details>
+	<summary><a href="https://ghub.io/telegraf">telegraf</a>: Modern Telegram Bot Framework</summary>
+	<b>Author</b>: Vitaly Domnikov</br>
+	<b>License</b>: MIT</br>
+	<b>Version</b>: ^3.36.0
+</details>
+<details>
+	<summary><a href="https://ghub.io/xo">xo</a>: JavaScript linter with great defaults</summary>
+	<b>Author</b>: Sindre Sorhus</br>
+	<b>License</b>: MIT</br>
+	<b>Version</b>: ^0.25.3
+</details>
 
 ## Contributors
 
