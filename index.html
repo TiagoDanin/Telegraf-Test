@@ -94,11 +94,11 @@ baseURL: https://tiagodanin.github.io
 <li>Offline</li>
 </ul>
 <h2 id="installation"><a href="#installation">Installation</a></h2>
-<p>Module available through the <a href="https://www.npmjs.com/">npm registry</a>. It can be installed using the  <a href="https://docs.npmjs.com/getting-started/installing-npm-packages-locally"><code>npm</code></a> or <a href="https://yarnpkg.com/en/"><code>yarn</code></a> command line tools.</p>
-<pre><code class="hljs language-sh"><span class="hljs-comment"># NPM</span>
-npm install telegraf-test --save
-<span class="hljs-comment"># Or Using Yarn</span>
-yarn add telegraf-test</code></pre>
+<p>Module available through the <a href="https://www.npmjs.com/">npm registry</a>. It can be installed using the <a href="https://docs.npmjs.com/getting-started/installing-npm-packages-locally"><code>npm</code></a> or <a href="https://yarnpkg.com/en/"><code>yarn</code></a> command line tool.</p>
+<pre><code class="hljs language-sh"><span class="hljs-comment"># Yarn (Recomend)</span>
+yarn add telegraf-test
+<span class="hljs-comment"># NPM </span>
+npm install telegraf-test --save</code></pre>
 <h2 id="example"><a href="#example">Example</a></h2>
 <pre><code class="hljs language-js"><span class="hljs-keyword">const</span> Telegraf = <span class="hljs-built_in">require</span>(<span class="hljs-string">'telegraf'</span>)
 <span class="hljs-keyword">const</span> TelegrafTest = <span class="hljs-built_in">require</span>(<span class="hljs-string">'telegraf-test'</span>)
@@ -213,6 +213,10 @@ Default value: Start in <code>0</code></p>
 <h4 id="wip-web-server"><a href="#wip-web-server">[WIP] Web Server</a></h4>
 <p>Telegram Bot Api Server Emulator. Start with <code>startServer()</code>.</p>
 <ul>
+<li><strong>startServer()</strong> - Return Express App Object</li>
+</ul>
+<p>Support methods:</p>
+<ul>
 <li class="task-list-item"><input type="checkbox" checked disabled> <a href="https://core.telegram.org/bots/api#getme">getMe</a></li>
 <li class="task-list-item"><input type="checkbox" checked disabled> <a href="https://core.telegram.org/bots/api#setwebhook">setWebhook</a></li>
 <li class="task-list-item"><input type="checkbox" checked disabled> <a href="https://core.telegram.org/bots/api#deletewebhook">getWebhookInfo</a></li>
@@ -291,22 +295,48 @@ describe(<span class="hljs-string">'bot'</span>, <span class="hljs-function"><sp
 <p>Set environment variables <code>DEBUG=telgraf:test</code>.</p>
 <h2 id="tests"><a href="#tests">Tests</a></h2>
 <p>To run the test suite, first install the dependencies, then run <code>test</code>:</p>
-<pre><code class="hljs language-sh"><span class="hljs-comment"># NPM</span>
-npm <span class="hljs-built_in">test</span>
-<span class="hljs-comment"># Or Using Yarn</span>
-yarn <span class="hljs-built_in">test</span></code></pre>
+<pre><code class="hljs language-sh"><span class="hljs-comment"># Using Yarn</span>
+yarn <span class="hljs-built_in">test</span>
+<span class="hljs-comment"># Using NPM</span>
+npm run <span class="hljs-built_in">test</span></code></pre>
 <h2 id="dependencies"><a href="#dependencies">Dependencies</a></h2>
-<ul>
-<li><a href="https://ghub.io/axios">axios</a>: Promise based HTTP client for the browser and node.js</li>
-<li><a href="https://ghub.io/debug">debug</a>: small debugging utility</li>
-<li><a href="https://ghub.io/express">express</a>: Fast, unopinionated, minimalist web framework</li>
-</ul>
+<details>
+	<summary><a href="https://ghub.io/axios">axios</a>: Promise based HTTP client for the browser and node.js</summary>
+	<b>Author</b>: Matt Zabriskie</br>
+	<b>License</b>: MIT</br>
+	<b>Version</b>: ^0.19.2
+</details>
+<details>
+	<summary><a href="https://ghub.io/debug">debug</a>: small debugging utility</summary>
+	<b>Author</b>: TJ Holowaychuk</br>
+	<b>License</b>: MIT</br>
+	<b>Version</b>: ^4.1.1
+</details>
+<details>
+	<summary><a href="https://ghub.io/express">express</a>: Fast, unopinionated, minimalist web framework</summary>
+	<b>Author</b>: TJ Holowaychuk</br>
+	<b>License</b>: MIT</br>
+	<b>Version</b>: ^4.17.1
+</details>
 <h2 id="dev-dependencies"><a href="#dev-dependencies">Dev Dependencies</a></h2>
-<ul>
-<li><a href="https://ghub.io/mocha">mocha</a>: simple, flexible, fun test framework</li>
-<li><a href="https://ghub.io/telegraf">telegraf</a>: 📡 Modern Telegram Bot Framework</li>
-<li><a href="https://ghub.io/xo">xo</a>: JavaScript happiness style linter ❤️</li>
-</ul>
+<details>
+	<summary><a href="https://ghub.io/mocha">mocha</a>: simple, flexible, fun test framework</summary>
+	<b>Author</b>: TJ Holowaychuk</br>
+	<b>License</b>: MIT</br>
+	<b>Version</b>: 7.0.1
+</details>
+<details>
+	<summary><a href="https://ghub.io/telegraf">telegraf</a>: Modern Telegram Bot Framework</summary>
+	<b>Author</b>: Vitaly Domnikov</br>
+	<b>License</b>: MIT</br>
+	<b>Version</b>: ^3.36.0
+</details>
+<details>
+	<summary><a href="https://ghub.io/xo">xo</a>: JavaScript linter with great defaults</summary>
+	<b>Author</b>: Sindre Sorhus</br>
+	<b>License</b>: MIT</br>
+	<b>Version</b>: ^0.25.3
+</details>
 <h2 id="contributors"><a href="#contributors">Contributors</a></h2>
 <p>Pull requests and stars are always welcome. For bugs and feature requests, please <a href="https://github.com/TiagoDanin/Telegraf-Test/issues">create an issue</a>. <a href="https://github.com/TiagoDanin/Telegraf-Test/graphs/contributors">List of all contributors</a>.</p>
 <h2 id="license"><a href="#license">License</a></h2>
