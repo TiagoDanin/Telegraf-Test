@@ -58,7 +58,7 @@
 		"express": "^4.17.1"
 	},
 	"devDependencies": {
-		"mocha": "7.1.0",
+		"mocha": "7.1.1",
 		"telegraf": "^3.36.0",
 		"xo": "^0.25.3"
 	},
