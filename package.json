@@ -53,7 +53,7 @@
 		"package.json"
 	],
 	"dependencies": {
-		"axios": "^0.20.0",
+		"axios": "^0.21.0",
 		"debug": "^4.2.0",
 		"express": "^4.17.1"
 	},
