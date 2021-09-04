@@ -3550,10 +3550,10 @@ tapable@^0.1.8:
   resolved "https://registry.yarnpkg.com/tapable/-/tapable-0.1.10.tgz#29c35707c2b70e50d07482b5d202e8ed446dafd4"
   integrity sha1-KcNXB8K3DlDQdIK10gLo7URtr9Q=
 
-telegraf@^4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/telegraf/-/telegraf-4.3.0.tgz#c9683192bdb81e7c7fbb04cf1ce750fb34de7149"
-  integrity sha512-MuDUtSMipzMzQp8fXbQx76jp4ZD70KREdnpH1idUzN9Zlgm6EzatBQFU4Ps0ipxtEmnBBdghBMumQwrjRe3eqg==
+telegraf@^4.4.1:
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/telegraf/-/telegraf-4.4.1.tgz#f7a9c82db17417149494aa63f9956e3484ffdcf6"
+  integrity sha512-jxV8fC/K6abcUTlhy/l8txJAmEJIkJoDu/cN0yXOJWLp9csfLIp+cD4qlwJ6ko+4EgOJmNZvWK7Tr2dxKolJQQ==
   dependencies:
     abort-controller "^3.0.0"
     debug "^4.3.1"
@@ -3563,7 +3563,7 @@ telegraf@^4.3.0:
     p-timeout "^4.1.0"
     safe-compare "^1.1.4"
     sandwich-stream "^2.0.2"
-    typegram "^3.2.0"
+    typegram "^3.4.2"
 
 text-table@^0.2.0:
   version "0.2.0"
@@ -3667,10 +3667,10 @@ type-is@~1.6.17, type-is@~1.6.18:
     media-typer "0.3.0"
     mime-types "~2.1.24"
 
-typegram@^3.2.0:
-  version "3.2.4"
-  resolved "https://registry.yarnpkg.com/typegram/-/typegram-3.2.4.tgz#b16310822c23d41a1d552d3fdc974f2d1c231d42"
-  integrity sha512-UkWgXIXZYwXK0q6zyZ4xtlETAmmgAt1Y4EFL5Ia87bIort1HHBw+RAMnO7eC1PYogCAKPSCeCSBAZVIoxQ/Dvw==
+typegram@^3.4.2:
+  version "3.4.3"
+  resolved "https://registry.yarnpkg.com/typegram/-/typegram-3.4.3.tgz#a1e212beaf6b43079a3774457b40d6eab1a93acf"
+  integrity sha512-pH0TQJzCWM2+7y6yiBoQVNt7PO9ZvAu/lQukVx4sm68FIBBZEBWI+2MzuMcdbwrD5mD5NrEMAyml9N6DupUZag==
 
 typescript@>=4.3, typescript@^4.3.5:
   version "4.3.5"
