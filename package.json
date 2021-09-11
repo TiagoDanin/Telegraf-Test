@@ -31,7 +31,7 @@
 		"test": "xo && mocha --exit --timeout 100000"
 	},
 	"engines": {
-		"node": ">=v14.17.5"
+		"node": ">=v14.17.6"
 	},
 	"private": false,
 	"repository": {
