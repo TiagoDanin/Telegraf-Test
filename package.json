@@ -54,7 +54,7 @@
 	],
 	"dependencies": {
 		"axios": "^0.21.0",
-		"debug": "^4.2.0",
+		"debug": "^4.3.2",
 		"express": "^4.17.1"
 	},
 	"devDependencies": {
