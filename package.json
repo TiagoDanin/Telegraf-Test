@@ -59,7 +59,7 @@
 	},
 	"devDependencies": {
 		"mocha": "9.0.1",
-		"telegraf": "^4.3.0",
+		"telegraf": "^4.4.1",
 		"xo": "^0.44.0"
 	},
 	"xo": {
