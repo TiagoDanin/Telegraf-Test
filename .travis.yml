@@ -3,7 +3,7 @@ node_js:
     - "12"
     - "10"
     - "9"
-    - "8"
+    - "8.17.0"
 install:
     - npm install --save-dev
 script:
